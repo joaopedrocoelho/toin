@@ -1,14 +1,14 @@
 import "./circle.css";
 import { Moon, Star, Fire, Thunder, Clover } from "@assets/index";
 
-const FourthCircle = () => {
+const Circle = () => {
   //an array of length 24 filled with the numbers 1 to 5 repeated randomly
   const randomArray = Array.from(
     { length: 24 },
     () => Math.floor(Math.random() * 5) + 1
   );
   return (
-    <div className="circle">
+    <div className="circle border-[0.25px] border-white/30">
       {randomArray.map((value, index) => {
         return (
           <div
@@ -31,4 +31,4 @@ const FourthCircle = () => {
   );
 };
 
-export default FourthCircle;
+export default Circle;
