@@ -1,11 +1,5 @@
-import React from "react";
-/// <reference types="vite-plugin-svgr/client" />
 import "./circle.css";
-import Star from "@assets/star.svg";
-import Moon from "@assets/Moon.svg";
-import Fire from "@assets/fire.svg";
-import Clover from "@assets/clover.svg";
-import Thunder from "@assets/Thunder.svg";
+import { Moon, Star, Fire, Thunder, Clover } from "@assets/index";
 
 const FourthCircle = () => {
   //an array of length 24 filled with the numbers 1 to 5 repeated randomly
@@ -22,13 +16,14 @@ const FourthCircle = () => {
             key={index}
             style={{
               transform: `rotate(${index * 15}deg)`,
+              fill: "white",
             }}
           >
-            {value === 1 && <Star />}
-            {value === 2 && <Moon />}
-            {value === 3 && <Fire />}
-            {value === 4 && <Thunder />}
-            {value === 5 && <Clover />}
+            {value === 1 && <Star className="fill-amber-400" />}
+            {value === 2 && <Moon className=" fill-cyan-200" />}
+            {value === 3 && <Fire className=" fill-rose-600" />}
+            {value === 4 && <Thunder className=" fill-lime-300" />}
+            {value === 5 && <Clover className=" fill-zinc-300" />}
           </div>
         );
       })}

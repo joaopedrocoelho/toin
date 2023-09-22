@@ -1,6 +1,22 @@
 .circle {
+  position: relative;
   width: 600px;
   height: 600px;
   border-radius: 100%;
   background-color: hsl(271, 63%, 12%);
+  display: flex;
+  justify-content: center;
+}
+
+.board-item {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 3rem;
+  padding-top: 1rem;
+
+  svg {
+    font-size: 2rem;
+  }
 }

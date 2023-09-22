@@ -1,8 +1,8 @@
 import react from "@vitejs/plugin-react";
 import { defineConfig } from "vite";
 import eslint from "vite-plugin-eslint";
-import svgr from "vite-plugin-svgr";
 import tsconfigPaths from "vite-tsconfig-paths";
+import svgr from "vite-plugin-svgr";
 
 export default defineConfig({
   // build: {
@@ -32,6 +32,8 @@ export default defineConfig({
     svgr({
       // Set it to `true` to export React component as default.
       // Notice that it will overrides the default behavior of Vite
+      exportAsDefault: false,
+
       // svgr options: https://react-svgr.com/docs/options/
       svgrOptions: {
         icon: true,
