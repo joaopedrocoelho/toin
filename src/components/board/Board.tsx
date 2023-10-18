@@ -4,10 +4,7 @@ import "./circle.css";
 import Circle from "./Circle";
 
 const Board = () => {
-  const randomArray = Array.from(
-    { length: 24 },
-    () => Math.floor(Math.random() * 5) + 1
-  );
+  const buildLines = Array.from({ length: 24 }, () => "");
   return (
     <div className="board">
       <Circle />
@@ -20,7 +17,7 @@ const Board = () => {
           transform: `rotate(7.5deg)`,
         }}
       >
-        {randomArray.map((value, index) => {
+        {buildLines.map((value, index) => {
           return (
             <div
               className="h-full w-[0.5px] bg-white/30 absolute"

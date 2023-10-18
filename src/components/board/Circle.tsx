@@ -2,14 +2,18 @@ import "./circle.css";
 import { Moon, Star, Fire, Thunder, Clover } from "@assets/index";
 
 const Circle = () => {
-  //an array of length 24 filled with the numbers 1 to 5 repeated randomly
-  const randomArray = Array.from(
-    { length: 24 },
-    () => Math.floor(Math.random() * 5) + 1
-  );
+  const circleArr = [
+    4, 1, 2, 2, 3, 5, 1, 1, 4, 2, 3, 5, 5, 1, 2, 4, 3, 3, 2, 5, 4, 4, 1, 3,
+  ];
+  console.log(circleArr.length);
+  // //an array of length 24 filled with the numbers 1 to 5 repeated randomly
+  // const randomArray = Array.from(
+  //   { length: 24 },
+  //   () => Math.floor(Math.random() * 5) + 1
+  // );
   return (
     <div className="circle border-[0.25px] border-white/30">
-      {randomArray.map((value, index) => {
+      {circleArr.map((value, index) => {
         return (
           <div
             className="board-item"
