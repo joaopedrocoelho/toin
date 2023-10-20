@@ -3,7 +3,19 @@ import React from "react";
 import "./circle.css";
 import Circle from "./Circle";
 
-const Board = () => {
+interface BoardProps {
+  outerLayerArr?: Array<number>;
+  secondLayerArr?: Array<number>;
+  thirdLayerArr?: Array<number>;
+  innerLayerArr?: Array<number>;
+}
+
+const Board = ({
+  outerLayerArr,
+  secondLayerArr,
+  thirdLayerArr,
+  innerLayerArr,
+}: BoardProps) => {
   const buildLines = Array.from({ length: 24 }, () => "");
   return (
     <div className="board">
