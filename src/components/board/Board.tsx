@@ -2,6 +2,7 @@ import React from "react";
 
 import "./circle.css";
 import Circle from "./Circle";
+import PlayerArrowsCircle from "./PlayerArrowsCircle";
 
 interface BoardProps {
   outerLayerArr?: Array<number>;
@@ -19,6 +20,7 @@ const Board = ({
   const buildLines = Array.from({ length: 24 }, () => "");
   return (
     <div className="board">
+      <PlayerArrowsCircle />
       <Circle />
       <Circle />
       <Circle />
