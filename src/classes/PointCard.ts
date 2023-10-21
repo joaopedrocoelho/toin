@@ -1,9 +1,13 @@
+import { pointCardsTypes } from "src/types/cardtypes";
+
 export class PointCard {
   private _points: number;
   private _pattern: number[][];
-  constructor(points: number, pattern: number[][]) {
+  private _type: pointCardsTypes;
+  constructor(points: number, pattern: number[][], type: pointCardsTypes) {
     this._points = points;
     this._pattern = pattern;
+    this._type = type;
   }
 
   get points() {
