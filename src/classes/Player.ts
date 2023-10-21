@@ -14,8 +14,8 @@ export class Player {
     this.cards = [];
     this.arrow = new PlayerArrow(id, arrowStartingIdx);
   }
-  addCard(card: PointCard) {
-    this.cards.push(card);
+  addCard(card: PointCard | PointCard[]) {
+    this.cards.concat(card);
   }
   removeCard(card: PointCard) {
     this.cards = this.cards.filter((c) => c !== card);

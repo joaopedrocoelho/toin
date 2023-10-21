@@ -24,7 +24,7 @@ const Board = ({
       <Circle />
       <Circle />
       <div
-        className="flex justify-center absolute w-[800px] h-[800px] rounded-full"
+        className="flex justify-center absolute w-full h-full rounded-full"
         style={{
           transform: `rotate(7.5deg)`,
         }}

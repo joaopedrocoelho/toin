@@ -1,11 +1,11 @@
 import "./App.css";
-import Board from "./components/board/Board";
+import PlayArea from "./components/board/PlayArea";
 
 function App() {
   return (
     <>
       <div className="flex w-full h-screen items-center justify-center">
-        <Board />
+        <PlayArea />
       </div>
     </>
   );
