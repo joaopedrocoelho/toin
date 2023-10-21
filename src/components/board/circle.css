@@ -22,7 +22,6 @@
   width: 100%;
   height: 100%;
   border-radius: 100%;
-  background-color: hsl(126, 100%, 55%);
   display: flex;
   justify-content: center;
   font-size: 3rem;
@@ -33,7 +32,7 @@
   width: 90%;
   height: 90%;
   border-radius: 100%;
-  background-color: hsl(271, 63%, 12%);
+  background-color: rgb(31, 11, 50);
   display: flex;
   justify-content: center;
   font-size: 3rem;

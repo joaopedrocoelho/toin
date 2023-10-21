@@ -3,7 +3,8 @@ import "./circle.css";
 
 const PlayerArrowsCircle = ({
   circleArr = [
-    0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+    //                       center
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
   ],
 }: {
   circleArr?: Array<number>;
@@ -22,7 +23,9 @@ const PlayerArrowsCircle = ({
               fill: "white",
             }}
           >
-            {value === 1 && <PlayerArrow className="fill-amber-400 " />}
+            {value === 1 && (
+              <PlayerArrow className="fill-amber-400 !w-12 rotate-180" />
+            )}
           </div>
         );
       })}

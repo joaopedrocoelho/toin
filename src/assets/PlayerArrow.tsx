@@ -7,7 +7,6 @@ const SvgPlayerArrow = (props: SVGProps<SVGSVGElement>) => (
         d="M17.87 0 0 17.13h35.74L17.87 0z"
         data-name="Layer 3"
         style={{
-          fill: "red",
           fillRule: "evenodd",
         }}
       />
