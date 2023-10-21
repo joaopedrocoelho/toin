@@ -6,4 +6,8 @@ export class PlayerArrow {
     this.playerId = playerId;
     this.arrowIndex = arrowIndex;
   }
+
+  moveArrow(newIndex: number) {
+    this.arrowIndex = newIndex;
+  }
 }
