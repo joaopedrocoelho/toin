@@ -1,13 +1,13 @@
-import { pointCardsTypes } from "src/types/cardtypes";
+import { pointCardPattern } from "src/types/cardtypes";
+import { FixedArray } from "src/types/helpers";
 
 export class PointCard {
   private _points: number;
-  private _pattern: number[][];
-  private _type: pointCardsTypes;
-  constructor(points: number, pattern: number[][], type: pointCardsTypes) {
+  private _pattern: pointCardPattern;
+
+  constructor(points: number, pattern: pointCardPattern) {
     this._points = points;
     this._pattern = pattern;
-    this._type = type;
   }
 
   get points() {
@@ -19,7 +19,7 @@ export class PointCard {
   }
 
   //create code to check mirror pattern
-  matchPattern(playerPattern: number[][]) {
+  matchPattern(playerPattern: pointCardPattern) {
     for (let i = 0; i < playerPattern.length; i++) {
       for (let j = 0; j < playerPattern[i].length; j++) {
         if (playerPattern[i][j] !== this._pattern[i][j]) {
