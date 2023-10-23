@@ -41,3 +41,24 @@ export const allSameTwoSidePattern: pointCardPattern = [
   [0, 0, 1],
   [0, 1, 0],
 ];
+
+export const allDiffPattern: pointCardPattern = [
+  [0, 2, 0],
+  [0, 2, 0],
+  [0, 2, 0],
+  [0, 2, 0],
+];
+
+export const allDiffOneSidePattern: pointCardPattern = [
+  [0, 2, 0],
+  [0, 0, 2],
+  [0, 2, 0],
+  [0, 2, 0],
+];
+
+export const allDiffTwoSidePattern: pointCardPattern = [
+  [0, 2, 0],
+  [0, 0, 2],
+  [0, 0, 2],
+  [0, 2, 0],
+];
