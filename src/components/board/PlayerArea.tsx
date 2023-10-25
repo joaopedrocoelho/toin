@@ -1,5 +1,7 @@
 import { PlayerArrow } from "@assets/index";
 import React from "react";
+import PointCardTemplate from "../cards/PointCardTemplate";
+import { allSameOneSidePattern } from "src/types/cardtypes";
 
 const PlayerArea = () => {
   return (
@@ -8,6 +10,7 @@ const PlayerArea = () => {
       <div className="flex relative border-gray-500 border-4 aspect-[8/11] items-center justify-center">
         2x
       </div>
+      <PointCardTemplate value={10} pattern={allSameOneSidePattern} />
     </div>
   );
 };
