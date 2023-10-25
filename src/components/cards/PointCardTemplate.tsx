@@ -35,13 +35,13 @@ const PointCardTemplate = ({ value, pattern, ...props }: Props) => (
             className="template_svg__cls-2"
             transform="matrix(1.19 0 0 1 120.05 50.51)"
           >
-            {"5"}
+            {value}
           </text>
           <text
             className="template_svg__cls-2"
             transform="matrix(-1.19 0 0 -1 34.88 196.62)"
           >
-            {"5"}
+            {value}
           </text>
           <path
             d="m79.37 193.86-8.63 8.27H88l-8.63-8.27z"
@@ -78,7 +78,7 @@ const PointCardTemplate = ({ value, pattern, ...props }: Props) => (
               )}
             </g>
             <g id="template_svg__innerLayerMid">
-              {pattern[0][0] === 2 && (
+              {pattern[0][1] === 2 && (
                 <path
                   id="template_svg__random-2"
                   d="m79.37 64.12-9.43 6.85 3.6 11.09H85.2l3.6-11.09-9.43-6.85z"
@@ -86,7 +86,7 @@ const PointCardTemplate = ({ value, pattern, ...props }: Props) => (
                   data-name="random"
                 />
               )}
-              {pattern[0][0] === 0 && (
+              {pattern[0][1] === 0 && (
                 <circle
                   cx={79.37}
                   cy={73.09}
@@ -94,7 +94,7 @@ const PointCardTemplate = ({ value, pattern, ...props }: Props) => (
                   className="template_svg__cls-5"
                 />
               )}
-              {pattern[0][0] === 1 && (
+              {pattern[0][1] === 1 && (
                 <path
                   d="m80.13 82.52-1.38-3a.6.6 0 0 0-1-.17l-2.29 2.35a.59.59 0 0 1-1-.53l.66-3.27a.59.59 0 0 0-.69-.7l-3.28.56a.6.6 0 0 1-.5-1l2.45-2.25a.6.6 0 0 0-.14-1L70 72a.6.6 0 0 1 .2-1.13l3.3-.38a.59.59 0 0 0 .46-.87l-1.54-2.94a.6.6 0 0 1 .82-.8l2.9 1.64a.6.6 0 0 0 .88-.44l.48-3.29a.6.6 0 0 1 1.14-.16l1.38 3a.6.6 0 0 0 1 .17l2.32-2.38a.59.59 0 0 1 1 .53l-.66 3.26a.6.6 0 0 0 .69.71l3.28-.56a.6.6 0 0 1 .5 1l-2.5 2.34a.59.59 0 0 0 .14 1l3 1.48a.6.6 0 0 1-.2 1.13l-3.3.37a.59.59 0 0 0-.46.87l1.54 3a.6.6 0 0 1-.82.8l-2.9-1.64a.59.59 0 0 0-.88.43l-.48 3.3a.6.6 0 0 1-1.16.08Z"
                   className="template_svg__cls-6"
@@ -102,7 +102,7 @@ const PointCardTemplate = ({ value, pattern, ...props }: Props) => (
               )}
             </g>
             <g id="template_svg__innerLayerRIght">
-              {pattern[0][0] === 2 && (
+              {pattern[0][2] === 2 && (
                 <path
                   id="template_svg__random-3"
                   d="m112.85 64.12-9.43 6.85 3.6 11.09h11.66l3.6-11.09-9.43-6.85z"
@@ -110,7 +110,7 @@ const PointCardTemplate = ({ value, pattern, ...props }: Props) => (
                   data-name="random"
                 />
               )}
-              {pattern[0][0] === 0 && (
+              {pattern[0][2] === 0 && (
                 <circle
                   cx={112.85}
                   cy={73.09}
@@ -118,7 +118,7 @@ const PointCardTemplate = ({ value, pattern, ...props }: Props) => (
                   className="template_svg__cls-5"
                 />
               )}
-              {pattern[0][0] === 1 && (
+              {pattern[0][2] === 1 && (
                 <path
                   d="m113.61 82.52-1.38-3a.6.6 0 0 0-1-.17l-2.32 2.38a.6.6 0 0 1-1-.53l.67-3.27a.59.59 0 0 0-.69-.7l-3.28.56a.6.6 0 0 1-.5-1l2.45-2.25a.6.6 0 0 0-.14-1l-3-1.47a.6.6 0 0 1 .2-1.13l3.3-.38a.59.59 0 0 0 .46-.87l-1.54-2.94a.6.6 0 0 1 .82-.8l2.9 1.64a.6.6 0 0 0 .88-.44l.48-3.29a.6.6 0 0 1 1.14-.16l1.38 3a.6.6 0 0 0 1 .17l2.32-2.38a.59.59 0 0 1 1 .53l-.66 3.26a.6.6 0 0 0 .69.71l3.28-.56a.6.6 0 0 1 .5 1l-2.45 2.25a.59.59 0 0 0 .14 1l3 1.48a.6.6 0 0 1-.2 1.13l-3.31.37a.6.6 0 0 0-.46.87l1.55 3a.6.6 0 0 1-.82.8l-2.9-1.64a.59.59 0 0 0-.88.43l-.48 3.3a.6.6 0 0 1-1.15.1Z"
                   className="template_svg__cls-6"
@@ -126,7 +126,7 @@ const PointCardTemplate = ({ value, pattern, ...props }: Props) => (
               )}
             </g>
             <g id="template_svg__thirdLayerLeft">
-              {pattern[0][0] === 2 && (
+              {pattern[1][0] === 2 && (
                 <path
                   id="template_svg__random-4"
                   d="m45.89 97.6-9.43 6.85 3.6 11.09h11.66l3.6-11.09-9.43-6.85z"
@@ -134,7 +134,7 @@ const PointCardTemplate = ({ value, pattern, ...props }: Props) => (
                   data-name="random"
                 />
               )}
-              {pattern[0][0] === 0 && (
+              {pattern[1][0] === 0 && (
                 <circle
                   cx={45.89}
                   cy={106.57}
@@ -142,7 +142,7 @@ const PointCardTemplate = ({ value, pattern, ...props }: Props) => (
                   className="template_svg__cls-5"
                 />
               )}
-              {pattern[0][0] === 1 && (
+              {pattern[1][0] === 1 && (
                 <path
                   d="m46.65 116-1.38-3a.6.6 0 0 0-1-.17L42 115.18a.6.6 0 0 1-1-.54l.66-3.26a.59.59 0 0 0-.69-.7l-3.28.56a.6.6 0 0 1-.5-1l2.42-2.24a.6.6 0 0 0-.14-1l-3-1.47a.6.6 0 0 1 .2-1.13L40 104a.6.6 0 0 0 .46-.87l-1.55-2.95a.59.59 0 0 1 .82-.79l2.9 1.64a.6.6 0 0 0 .88-.44L44 97.3a.6.6 0 0 1 1.14-.16l1.38 3a.6.6 0 0 0 1 .17L49.8 98a.6.6 0 0 1 1 .53l-.67 3.26a.6.6 0 0 0 .69.71l3.28-.56a.6.6 0 0 1 .5 1l-2.45 2.25a.59.59 0 0 0 .14 1l3 1.48a.6.6 0 0 1-.2 1.13l-3.3.37a.59.59 0 0 0-.46.87l1.54 3a.6.6 0 0 1-.82.8l-2.9-1.64a.59.59 0 0 0-.88.43l-.48 3.29a.6.6 0 0 1-1.14.08Z"
                   className="template_svg__cls-6"
@@ -150,7 +150,7 @@ const PointCardTemplate = ({ value, pattern, ...props }: Props) => (
               )}
             </g>
             <g id="template_svg__thirdLayerMid">
-              {pattern[0][0] === 2 && (
+              {pattern[1][1] === 2 && (
                 <path
                   id="template_svg__random-5"
                   d="m79.37 97.6-9.43 6.85 3.6 11.09H85.2l3.6-11.09-9.43-6.85z"
@@ -158,7 +158,7 @@ const PointCardTemplate = ({ value, pattern, ...props }: Props) => (
                   data-name="random"
                 />
               )}
-              {pattern[0][0] === 0 && (
+              {pattern[1][1] === 0 && (
                 <circle
                   cx={79.37}
                   cy={106.57}
@@ -166,7 +166,7 @@ const PointCardTemplate = ({ value, pattern, ...props }: Props) => (
                   className="template_svg__cls-5"
                 />
               )}
-              {pattern[0][0] === 1 && (
+              {pattern[1][1] === 1 && (
                 <path
                   d="m80.13 116-1.38-3a.6.6 0 0 0-1-.17l-2.32 2.38a.6.6 0 0 1-1-.54l.66-3.26a.59.59 0 0 0-.69-.7l-3.28.56a.6.6 0 0 1-.5-1l2.47-2.27a.6.6 0 0 0-.14-1l-3-1.47a.6.6 0 0 1 .2-1.13l3.3-.38a.59.59 0 0 0 .46-.87l-1.54-2.95a.59.59 0 0 1 .82-.79l2.9 1.64a.6.6 0 0 0 .88-.44l.48-3.29a.6.6 0 0 1 1.14-.16l1.38 3a.6.6 0 0 0 1 .17L83.28 98a.59.59 0 0 1 1 .53l-.66 3.26a.6.6 0 0 0 .69.71l3.28-.56a.6.6 0 0 1 .5 1l-2.45 2.25a.59.59 0 0 0 .14 1l3 1.48a.6.6 0 0 1-.2 1.13l-3.3.37a.59.59 0 0 0-.46.87l1.54 3a.6.6 0 0 1-.82.8l-2.9-1.64a.59.59 0 0 0-.88.43l-.48 3.29a.6.6 0 0 1-1.15.08Z"
                   className="template_svg__cls-6"
@@ -174,7 +174,7 @@ const PointCardTemplate = ({ value, pattern, ...props }: Props) => (
               )}
             </g>
             <g id="template_svg__thirdLayerRight">
-              {pattern[0][0] === 2 && (
+              {pattern[1][2] === 2 && (
                 <path
                   id="template_svg__random-6"
                   d="m112.85 97.6-9.43 6.85 3.6 11.09h11.66l3.6-11.09-9.43-6.85z"
@@ -182,7 +182,7 @@ const PointCardTemplate = ({ value, pattern, ...props }: Props) => (
                   data-name="random"
                 />
               )}
-              {pattern[0][0] === 0 && (
+              {pattern[1][2] === 0 && (
                 <circle
                   cx={112.85}
                   cy={106.57}
@@ -190,7 +190,7 @@ const PointCardTemplate = ({ value, pattern, ...props }: Props) => (
                   className="template_svg__cls-5"
                 />
               )}
-              {pattern[0][0] === 1 && (
+              {pattern[1][2] === 1 && (
                 <path
                   d="m113.61 116-1.38-3a.6.6 0 0 0-1-.17l-2.32 2.38a.6.6 0 0 1-1-.54l.67-3.26a.59.59 0 0 0-.69-.7l-3.28.56a.6.6 0 0 1-.5-1l2.45-2.25a.6.6 0 0 0-.14-1l-3-1.47a.6.6 0 0 1 .2-1.13L107 104a.59.59 0 0 0 .46-.87l-1.54-2.95a.59.59 0 0 1 .82-.79l2.9 1.64a.6.6 0 0 0 .88-.44l.48-3.29a.6.6 0 0 1 1.14-.16l1.38 3a.6.6 0 0 0 1 .17l2.24-2.31a.59.59 0 0 1 1 .53l-.66 3.26a.6.6 0 0 0 .69.71l3.28-.56a.6.6 0 0 1 .5 1l-2.45 2.25a.59.59 0 0 0 .14 1l3 1.48a.6.6 0 0 1-.2 1.13l-3.31.37a.6.6 0 0 0-.46.87l1.55 3a.6.6 0 0 1-.82.8l-2.9-1.64a.59.59 0 0 0-.88.43l-.48 3.29a.6.6 0 0 1-1.15.08Z"
                   className="template_svg__cls-6"
@@ -198,7 +198,7 @@ const PointCardTemplate = ({ value, pattern, ...props }: Props) => (
               )}
             </g>
             <g id="template_svg__secondLayerLeft">
-              {pattern[0][0] === 2 && (
+              {pattern[2][0] === 2 && (
                 <path
                   id="template_svg__random-7"
                   d="m45.89 131.08-9.43 6.85 3.6 11.09h11.66l3.6-11.09-9.43-6.85z"
@@ -206,7 +206,7 @@ const PointCardTemplate = ({ value, pattern, ...props }: Props) => (
                   data-name="random"
                 />
               )}
-              {pattern[0][0] === 0 && (
+              {pattern[2][0] === 0 && (
                 <circle
                   cx={45.89}
                   cy={140.05}
@@ -214,7 +214,7 @@ const PointCardTemplate = ({ value, pattern, ...props }: Props) => (
                   className="template_svg__cls-5"
                 />
               )}
-              {pattern[0][0] === 1 && (
+              {pattern[2][0] === 1 && (
                 <path
                   d="m46.65 149.48-1.38-3a.6.6 0 0 0-1-.17L42 148.66a.6.6 0 0 1-1-.54l.66-3.26a.6.6 0 0 0-.69-.71l-3.28.56a.59.59 0 0 1-.5-1l2.45-2.25a.6.6 0 0 0-.14-1l-3-1.47a.6.6 0 0 1 .2-1.13l3.31-.38a.6.6 0 0 0 .46-.87l-1.55-3a.59.59 0 0 1 .82-.79l2.9 1.64a.6.6 0 0 0 .88-.44l.48-3.29a.6.6 0 0 1 1.14-.16l1.38 3a.6.6 0 0 0 1 .17l2.32-2.39a.6.6 0 0 1 1 .54l-.67 3.26a.6.6 0 0 0 .69.71l3.28-.56a.6.6 0 0 1 .5 1l-2.45 2.25a.59.59 0 0 0 .14 1l3 1.48a.59.59 0 0 1-.2 1.12l-3.3.38a.59.59 0 0 0-.46.87l1.54 3a.6.6 0 0 1-.82.8l-2.9-1.64a.59.59 0 0 0-.88.43l-.48 3.29a.6.6 0 0 1-1.18.2Z"
                   className="template_svg__cls-6"
@@ -222,7 +222,7 @@ const PointCardTemplate = ({ value, pattern, ...props }: Props) => (
               )}
             </g>
             <g id="template_svg__secondLayeMid">
-              {pattern[0][0] === 2 && (
+              {pattern[2][1] === 2 && (
                 <path
                   id="template_svg__random-8"
                   d="m79.37 131.08-9.43 6.85 3.6 11.09H85.2l3.6-11.09-9.43-6.85z"
@@ -230,7 +230,7 @@ const PointCardTemplate = ({ value, pattern, ...props }: Props) => (
                   data-name="random"
                 />
               )}
-              {pattern[0][0] === 0 && (
+              {pattern[2][1] === 0 && (
                 <circle
                   cx={79.37}
                   cy={140.05}
@@ -238,7 +238,7 @@ const PointCardTemplate = ({ value, pattern, ...props }: Props) => (
                   className="template_svg__cls-5"
                 />
               )}
-              {pattern[0][0] === 1 && (
+              {pattern[2][1] === 1 && (
                 <path
                   d="m80.13 149.48-1.38-3a.6.6 0 0 0-1-.17l-2.32 2.38a.6.6 0 0 1-1-.54l.66-3.26a.6.6 0 0 0-.69-.71l-3.28.56a.59.59 0 0 1-.5-1l2.45-2.25a.6.6 0 0 0-.14-1L70 139a.6.6 0 0 1 .2-1.13l3.3-.38a.59.59 0 0 0 .46-.87l-1.54-3a.59.59 0 0 1 .82-.79l2.9 1.64a.6.6 0 0 0 .88-.44l.48-3.29a.6.6 0 0 1 1.14-.16l1.38 3a.6.6 0 0 0 1 .17l2.32-2.39a.6.6 0 0 1 1 .54l-.66 3.26a.6.6 0 0 0 .69.71l3.28-.56a.6.6 0 0 1 .5 1l-2.45 2.25a.59.59 0 0 0 .14 1l3 1.48a.59.59 0 0 1-.2 1.12l-3.3.38a.59.59 0 0 0-.46.87l1.54 3a.6.6 0 0 1-.82.8l-2.9-1.64a.59.59 0 0 0-.88.43l-.48 3.29a.6.6 0 0 1-1.21.19Z"
                   className="template_svg__cls-6"
@@ -246,7 +246,7 @@ const PointCardTemplate = ({ value, pattern, ...props }: Props) => (
               )}
             </g>
             <g id="template_svg__secondLayerRight">
-              {pattern[0][0] === 2 && (
+              {pattern[2][2] === 2 && (
                 <path
                   id="template_svg__random-9"
                   d="m112.85 131.08-9.43 6.85 3.6 11.09h11.66l3.6-11.09-9.43-6.85z"
@@ -254,7 +254,7 @@ const PointCardTemplate = ({ value, pattern, ...props }: Props) => (
                   data-name="random"
                 />
               )}
-              {pattern[0][0] === 0 && (
+              {pattern[2][2] === 0 && (
                 <circle
                   cx={112.85}
                   cy={140.05}
@@ -262,7 +262,7 @@ const PointCardTemplate = ({ value, pattern, ...props }: Props) => (
                   className="template_svg__cls-5"
                 />
               )}
-              {pattern[0][0] === 1 && (
+              {pattern[2][2] === 1 && (
                 <path
                   d="m113.61 149.48-1.38-3a.6.6 0 0 0-1-.17l-2.32 2.38a.6.6 0 0 1-1-.54l.67-3.26a.6.6 0 0 0-.69-.71l-3.28.56a.59.59 0 0 1-.5-1l2.45-2.25a.6.6 0 0 0-.14-1l-3-1.47a.6.6 0 0 1 .2-1.13l3.3-.38a.59.59 0 0 0 .46-.87l-1.54-3a.59.59 0 0 1 .82-.79l2.9 1.64a.6.6 0 0 0 .88-.44l.48-3.29a.6.6 0 0 1 1.14-.16l1.38 3a.6.6 0 0 0 1 .17l2.32-2.39a.6.6 0 0 1 1 .54l-.66 3.26a.6.6 0 0 0 .69.71l3.28-.56a.6.6 0 0 1 .5 1l-2.45 2.25a.59.59 0 0 0 .14 1l3 1.48a.59.59 0 0 1-.2 1.12l-3.31.38a.6.6 0 0 0-.46.87l1.55 3a.6.6 0 0 1-.82.8l-2.9-1.64a.59.59 0 0 0-.88.43l-.48 3.29a.6.6 0 0 1-1.15.17Z"
                   className="template_svg__cls-6"
@@ -270,7 +270,7 @@ const PointCardTemplate = ({ value, pattern, ...props }: Props) => (
               )}
             </g>
             <g id="template_svg__outerLayerLeft">
-              {pattern[0][0] === 2 && (
+              {pattern[3][0] === 2 && (
                 <path
                   id="template_svg__random-10"
                   d="m45.89 164.56-9.43 6.85 3.6 11.09h11.66l3.6-11.09-9.43-6.85z"
@@ -278,7 +278,7 @@ const PointCardTemplate = ({ value, pattern, ...props }: Props) => (
                   data-name="random"
                 />
               )}
-              {pattern[0][0] === 0 && (
+              {pattern[3][0] === 0 && (
                 <circle
                   cx={45.89}
                   cy={173.53}
@@ -286,7 +286,7 @@ const PointCardTemplate = ({ value, pattern, ...props }: Props) => (
                   className="template_svg__cls-5"
                 />
               )}
-              {pattern[0][0] === 1 && (
+              {pattern[3][0] === 1 && (
                 <path
                   d="m46.65 183-1.38-3a.59.59 0 0 0-1-.17L42 182.14a.6.6 0 0 1-1-.54l.66-3.26a.6.6 0 0 0-.69-.71l-3.28.56a.59.59 0 0 1-.5-1l2.45-2.25a.6.6 0 0 0-.14-1l-3-1.47a.6.6 0 0 1 .2-1.13L40 171a.6.6 0 0 0 .46-.87l-1.55-3a.59.59 0 0 1 .82-.79l2.9 1.64a.6.6 0 0 0 .88-.44l.48-3.29a.6.6 0 0 1 1.14-.16l1.38 3a.6.6 0 0 0 1 .17l2.32-2.39a.6.6 0 0 1 1 .54l-.67 3.26a.6.6 0 0 0 .69.71l3.28-.56a.6.6 0 0 1 .5 1l-2.45 2.25a.59.59 0 0 0 .14 1l3 1.48a.59.59 0 0 1-.2 1.12l-3.3.38a.59.59 0 0 0-.46.87l1.54 2.95a.59.59 0 0 1-.82.79l-2.9-1.63a.59.59 0 0 0-.88.43l-.48 3.29a.6.6 0 0 1-1.17.25Z"
                   className="template_svg__cls-6"
@@ -294,7 +294,7 @@ const PointCardTemplate = ({ value, pattern, ...props }: Props) => (
               )}
             </g>
             <g id="template_svg__outerLayerMid">
-              {pattern[0][0] === 2 && (
+              {pattern[3][1] === 2 && (
                 <path
                   id="template_svg__random-11"
                   d="m79.37 164.56-9.43 6.85 3.6 11.09H85.2l3.6-11.09-9.43-6.85z"
@@ -302,7 +302,7 @@ const PointCardTemplate = ({ value, pattern, ...props }: Props) => (
                   data-name="random"
                 />
               )}
-              {pattern[0][0] === 0 && (
+              {pattern[3][1] === 0 && (
                 <circle
                   cx={79.37}
                   cy={173.53}
@@ -310,7 +310,7 @@ const PointCardTemplate = ({ value, pattern, ...props }: Props) => (
                   className="template_svg__cls-5"
                 />
               )}
-              {pattern[0][0] === 1 && (
+              {pattern[3][1] === 1 && (
                 <path
                   d="m80.13 183-1.38-3a.59.59 0 0 0-1-.17l-2.32 2.38a.6.6 0 0 1-1-.54l.66-3.26a.6.6 0 0 0-.69-.71l-3.28.56a.59.59 0 0 1-.5-1l2.45-2.25a.6.6 0 0 0-.14-1l-3-1.47a.6.6 0 0 1 .2-1.13l3.3-.38a.59.59 0 0 0 .46-.87l-1.54-3a.59.59 0 0 1 .82-.79l2.9 1.64a.6.6 0 0 0 .88-.44l.48-3.29a.6.6 0 0 1 1.14-.16l1.38 3a.6.6 0 0 0 1 .17l2.32-2.39a.6.6 0 0 1 1 .54l-.66 3.26a.6.6 0 0 0 .69.71l3.28-.56a.6.6 0 0 1 .5 1l-2.45 2.25a.59.59 0 0 0 .14 1l3 1.48a.59.59 0 0 1-.2 1.12l-3.3.38a.59.59 0 0 0-.46.87l1.54 2.95a.59.59 0 0 1-.82.79l-2.9-1.63a.59.59 0 0 0-.88.43l-.48 3.29a.6.6 0 0 1-1.14.22Z"
                   className="template_svg__cls-6"
@@ -322,7 +322,7 @@ const PointCardTemplate = ({ value, pattern, ...props }: Props) => (
               className="template_svg__cls-3"
             />
             <g id="template_svg__outerLayerRight">
-              {pattern[0][0] === 2 && (
+              {pattern[3][2] === 2 && (
                 <path
                   id="template_svg__random-12"
                   d="m112.85 164.56-9.43 6.85 3.6 11.09h11.66l3.6-11.09-9.43-6.85z"
@@ -330,7 +330,7 @@ const PointCardTemplate = ({ value, pattern, ...props }: Props) => (
                   data-name="random"
                 />
               )}
-              {pattern[0][0] === 0 && (
+              {pattern[3][2] === 0 && (
                 <circle
                   cx={112.85}
                   cy={173.53}
@@ -338,7 +338,7 @@ const PointCardTemplate = ({ value, pattern, ...props }: Props) => (
                   className="template_svg__cls-5"
                 />
               )}
-              {pattern[0][0] === 1 && (
+              {pattern[3][2] === 1 && (
                 <path
                   d="m113.61 183-1.38-3a.59.59 0 0 0-1-.17l-2.32 2.38a.6.6 0 0 1-1-.54l.67-3.26a.6.6 0 0 0-.69-.71l-3.28.56a.59.59 0 0 1-.5-1l2.45-2.25a.6.6 0 0 0-.14-1l-3-1.47a.6.6 0 0 1 .2-1.13L107 171a.59.59 0 0 0 .46-.87l-1.54-3a.59.59 0 0 1 .82-.79l2.9 1.64a.6.6 0 0 0 .88-.44l.48-3.29a.6.6 0 0 1 1.14-.16l1.38 3a.6.6 0 0 0 1 .17l2.32-2.39a.6.6 0 0 1 1 .54l-.66 3.26a.6.6 0 0 0 .69.71l3.28-.56a.6.6 0 0 1 .5 1l-2.45 2.25a.59.59 0 0 0 .14 1l3 1.48a.59.59 0 0 1-.2 1.12l-3.31.38a.6.6 0 0 0-.46.87l1.55 2.95a.59.59 0 0 1-.82.79l-2.9-1.63a.59.59 0 0 0-.88.43l-.48 3.29a.6.6 0 0 1-1.23.25Z"
                   className="template_svg__cls-6"
