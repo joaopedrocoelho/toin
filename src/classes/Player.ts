@@ -1,5 +1,5 @@
 import { PlayerArrow } from "./PlayerArrow";
-import { Card } from "./PointCard";
+import { Card } from "./Card";
 
 export class Player {
   id: number;

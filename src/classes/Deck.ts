@@ -1,4 +1,4 @@
-import { Card } from "./PointCard";
+import { Card } from "./Card";
 
 export class Deck {
   cards: Card[];
