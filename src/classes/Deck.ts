@@ -1,12 +1,12 @@
-import { Card } from "./Card";
+import { CardClass } from "./Card";
 
 export class Deck {
-  cards: Card[];
+  cards: CardClass[];
   constructor() {
     this.cards = [];
     this.cards = [];
   }
-  addCard(card: Card) {
+  addCard(card: CardClass) {
     this.cards.push(card);
   }
   getCards() {

@@ -1,11 +1,11 @@
 import { PlayerArrow } from "./PlayerArrow";
-import { Card } from "./Card";
+import { CardClass } from "./Card";
 
 export class Player {
   id: number;
   name: string;
   points: number;
-  hand: Card[];
+  hand: CardClass[];
   arrow: PlayerArrow;
   constructor(id: number, name: string, arrowStartingIdx: number) {
     this.id = id;
@@ -15,13 +15,13 @@ export class Player {
     this.arrow = new PlayerArrow(id, arrowStartingIdx);
   }
 
-  addStartingHand(hand: Card[]) {
+  addStartingHand(hand: CardClass[]) {
     this.hand = hand;
   }
-  addCard(card: Card | Card[]) {
+  addCard(card: CardClass | CardClass[]) {
     this.hand.concat(card);
   }
-  removeCard(card: Card) {
+  removeCard(card: CardClass) {
     this.hand = this.hand.filter((c) => c !== card);
   }
   moveArrow(newIndex: number) {

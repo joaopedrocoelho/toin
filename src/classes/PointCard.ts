@@ -1,7 +1,12 @@
 import { pointCardPattern } from "src/types/cardtypes";
-import { Card } from "./Card";
+import { CardClass } from "./Card";
 
-export class PointCard extends Card {
+export interface PointCardProperties {
+  points: number;
+  pattern: pointCardPattern;
+}
+
+export class PointCard extends CardClass {
   private _points: number;
   private _pattern: pointCardPattern;
 
@@ -29,6 +34,13 @@ export class PointCard extends Card {
       }
     }
     return true;
+  }
+
+  getProperties() {
+    return {
+      points: this._points,
+      pattern: this._pattern,
+    };
   }
 }
 

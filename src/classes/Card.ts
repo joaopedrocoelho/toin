@@ -1,10 +1,18 @@
+import { PointCardProperties } from "./PointCard";
+
 export type cardTypes = "PointCard" | "ActionCard" | "WildCard";
-export class Card {
+
+export type cardProperties = PointCardProperties;
+export abstract class CardClass {
   private _type: cardTypes;
   private _faceUp: boolean = false;
 
   constructor(type: cardTypes) {
     this._type = type;
+  }
+
+  get faceUp() {
+    return this._faceUp;
   }
 
   get type() {
@@ -18,4 +26,10 @@ export class Card {
   turnFaceDown() {
     this._faceUp = false;
   }
+
+  playCard() {
+    console.log(this._type + " card played");
+  }
+
+  abstract getProperties(): cardProperties;
 }

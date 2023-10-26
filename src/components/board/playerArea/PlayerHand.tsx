@@ -1,12 +1,26 @@
 import React from "react";
-import { Card } from "src/classes/Card";
+import { CardClass } from "src/classes/Card";
+import Card from "src/components/cards/Card";
 
 export interface PlayerHandProps {
-  cards: Card[];
+  cards: CardClass[];
 }
 
 const PlayerHand = ({ cards }: PlayerHandProps) => {
-  return <div>PlayerHand</div>;
+  return (
+    <div className="flex">
+      {cards.map((card, index) => {
+        return (
+          <Card
+            key={index}
+            type={card.type}
+            faceUp={card.faceUp}
+            cardProperties={card.getProperties()}
+          />
+        );
+      })}
+    </div>
+  );
 };
 
 export default PlayerHand;
