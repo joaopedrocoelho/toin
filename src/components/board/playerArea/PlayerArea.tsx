@@ -1,6 +1,5 @@
-import { PlayerArrow } from "@assets/index";
 import React from "react";
-import PointCardTemplate from "../cards/PointCardTemplate";
+import PointCardTemplate from "../../cards/PointCardTemplate";
 import { allSameOneSidePattern } from "src/types/cardtypes";
 
 const PlayerArea = () => {

@@ -1,11 +1,12 @@
 import { pointCardPattern } from "src/types/cardtypes";
-import { FixedArray } from "src/types/helpers";
+import { Card } from "./Card";
 
-export class PointCard {
+export class PointCard extends Card {
   private _points: number;
   private _pattern: pointCardPattern;
 
   constructor(points: number, pattern: pointCardPattern) {
+    super("PointCard");
     this._points = points;
     this._pattern = pattern;
   }

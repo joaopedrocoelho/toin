@@ -1,24 +1,28 @@
 import { PlayerArrow } from "./PlayerArrow";
-import { PointCard } from "./PointCard";
+import { Card } from "./PointCard";
 
 export class Player {
   id: number;
   name: string;
   points: number;
-  cards: Array<PointCard>;
+  hand: Card[];
   arrow: PlayerArrow;
   constructor(id: number, name: string, arrowStartingIdx: number) {
     this.id = id;
     this.name = name;
     this.points = 0;
-    this.cards = [];
+    this.hand = [];
     this.arrow = new PlayerArrow(id, arrowStartingIdx);
   }
-  addCard(card: PointCard | PointCard[]) {
-    this.cards.concat(card);
+
+  addStartingHand(hand: Card[]) {
+    this.hand = hand;
   }
-  removeCard(card: PointCard) {
-    this.cards = this.cards.filter((c) => c !== card);
+  addCard(card: Card | Card[]) {
+    this.hand.concat(card);
+  }
+  removeCard(card: Card) {
+    this.hand = this.hand.filter((c) => c !== card);
   }
   moveArrow(newIndex: number) {
     this.arrow.moveArrow(newIndex);

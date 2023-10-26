@@ -1,6 +1,6 @@
 import React from "react";
 import Board from "./Board";
-import PlayerArea from "./PlayerArea";
+import PlayerArea from "./playerArea/PlayerArea";
 
 const PlayArea = () => {
   return (
