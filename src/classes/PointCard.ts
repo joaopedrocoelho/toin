@@ -1,4 +1,4 @@
-import { pointCardPattern } from "src/types/cardtypes";
+import { pointCardPattern } from "src/types/cardpatterns";
 import { CardClass } from "./Card";
 
 export interface PointCardProperties {
