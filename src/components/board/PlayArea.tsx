@@ -9,6 +9,7 @@ const PlayArea = () => {
         <div className="w-full max-w-[35%] aspect-square">
           <Board />
         </div>
+
       </div>
       <div className="w-full max-w-[10%] aspect-square">
         <PlayerArea />

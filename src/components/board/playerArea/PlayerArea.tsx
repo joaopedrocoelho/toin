@@ -22,7 +22,6 @@ const PlayerArea = () => {
   ];
   return (
     <div className="flex w-full gap-x-5">
-      {/* <PlayerArrow className=" w-2/3 m-auto pt-8 pb-4" /> */}
       <div className="flex relative border-gray-500 border-4 aspect-[8/11] min-w-[150px] items-center justify-center">
         2x
       </div>
