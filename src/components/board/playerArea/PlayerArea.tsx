@@ -1,16 +1,32 @@
 import React from "react";
-import PointCardTemplate from "../../cards/PointCardTemplate";
-import { allSameOneSidePattern } from "src/types/cardtypes";
 import PlayerHand from "./PlayerHand";
+import {
+  ThreeSameCard,
+  TwoSameCard,
+  AllSameCard,
+  AllSameTwoSideCard,
+  AllDiffCard,
+  AllDIffOneSide,
+  AllDiffTwoSide,
+} from "src/classes/cards/pointcards";
 
 const PlayerArea = () => {
+  const cards = [
+    ThreeSameCard,
+    TwoSameCard,
+    AllSameCard,
+    AllSameTwoSideCard,
+    AllDiffCard,
+    AllDIffOneSide,
+    AllDiffTwoSide,
+  ];
   return (
-    <div className="flex flex-col">
+    <div className="flex w-full gap-x-5">
       {/* <PlayerArrow className=" w-2/3 m-auto pt-8 pb-4" /> */}
-      <div className="flex relative border-gray-500 border-4 aspect-[8/11] items-center justify-center">
+      <div className="flex relative border-gray-500 border-4 aspect-[8/11] min-w-[150px] items-center justify-center">
         2x
       </div>
-      <PlayerHand />
+      <PlayerHand cards={cards} />
     </div>
   );
 };

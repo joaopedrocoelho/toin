@@ -8,15 +8,25 @@ export interface PlayerHandProps {
 
 const PlayerHand = ({ cards }: PlayerHandProps) => {
   return (
-    <div className="flex">
+    <div className="flex w-full relative h-[200px] overflow-y-clip pt-4">
       {cards.map((card, index) => {
         return (
-          <Card
+          <div
+            className="absolute"
+            style={{
+              left: `${index * 20}px`,
+              zIndex: index,
+            }}
             key={index}
-            type={card.type}
-            faceUp={card.faceUp}
-            cardProperties={card.getProperties()}
-          />
+            data-testid="player-hand-card"
+          >
+            <Card
+              key={index}
+              type={card.type}
+              faceUp={card.faceUp}
+              cardProperties={card.getProperties()}
+            />
+          </div>
         );
       })}
     </div>
