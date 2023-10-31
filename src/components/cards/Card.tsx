@@ -1,6 +1,7 @@
 import React from "react";
 import { cardProperties, cardTypes } from "src/classes/Card";
 import FaceDownCard from "./FaceDownCard";
+import PointCardTemplate from "./PointCardTemplate";
 
 //later should add other types
 
@@ -8,14 +9,36 @@ interface CardProps {
   type: cardTypes;
   faceUp: boolean;
   cardProperties: cardProperties;
+  height?: string;
 }
 
-const Card = ({ faceUp, type, cardProperties }: CardProps) => {
+const Card = ({ faceUp, type, cardProperties, height }: CardProps) => {
   if (faceUp) {
-    return <div>render card component</div>;
+    switch (type) {
+      case "PointCard":
+        return (
+          <div
+            className="flex text-white items-center 
+        justify-center aspect-[8/11]
+        rounded-md min-w-[150px]"
+            style={{
+              height: height ? height : "auto",
+            }}
+          >
+            <PointCardTemplate
+              value={cardProperties.points}
+              pattern={cardProperties.pattern}
+            />
+          </div>
+        );
+      case "ActionCard":
+        return <div>Action Card</div>;
+      case "WildCard":
+        return <div>Wild Card</div>;
+    }
+  } else {
+    return <FaceDownCard />;
   }
-
-  return <FaceDownCard />;
 };
 
 export default Card;
