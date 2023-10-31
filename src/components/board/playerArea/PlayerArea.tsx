@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import PlayerHand from "./PlayerHand";
 import {
   ThreeSameCard,
@@ -9,6 +9,8 @@ import {
   AllDIffOneSide,
   AllDiffTwoSide,
 } from "src/classes/cards/pointcards";
+import ToinArea from "./ToinArea";
+import { ToinContext } from "src/context/toinContext";
 
 const PlayerArea = () => {
   const cards = [
@@ -20,11 +22,11 @@ const PlayerArea = () => {
     AllDIffOneSide,
     AllDiffTwoSide,
   ];
+
+  const { card } = useContext(ToinContext);
   return (
     <div className="flex w-full gap-x-5">
-      <div className="flex relative border-gray-500 border-4 aspect-[8/11] min-w-[150px] items-center justify-center">
-        2x
-      </div>
+      <ToinArea card={card} />
       <PlayerHand cards={cards} />
     </div>
   );

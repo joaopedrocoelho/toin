@@ -3,6 +3,8 @@ import "./App.css";
 import PlayArea from "./components/board/PlayArea";
 import { ModalContext } from "./context/modalContext";
 import { createPortal } from "react-dom";
+import { ToinContext, cardProp } from "./context/toinContext";
+import { CardClass } from "./classes/Card";
 
 function App() {
   const [modal, setNewModal] = useState<JSX.Element | null>(null);
@@ -23,20 +25,31 @@ function App() {
     setNewModal(null);
   };
 
+  const [card, setCard] = useState<cardProp>(null);
+
   return (
-    <ModalContext.Provider
+    <ToinContext.Provider
       value={{
-        ModalComponent: modal,
-        setModal,
-        closeModal,
-        open,
+        card,
+        setCard: (card: CardClass | null) => {
+          setCard(card);
+        },
       }}
     >
-      {modal && open && createPortal(modal, document.body)}
-      <div className="flex w-full h-screen items-center justify-center">
-        <PlayArea />
-      </div>
-    </ModalContext.Provider>
+      <ModalContext.Provider
+        value={{
+          ModalComponent: modal,
+          setModal,
+          closeModal,
+          open,
+        }}
+      >
+        {modal && open && createPortal(modal, document.body)}
+        <div className="flex w-full h-screen items-center justify-center">
+          <PlayArea />
+        </div>
+      </ModalContext.Provider>
+    </ToinContext.Provider>
   );
 }
 
