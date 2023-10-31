@@ -1,6 +1,6 @@
 import * as React from "react";
 import type { SVGProps } from "react";
-import { pointCardPattern } from "src/types/cardtypes";
+import { pointCardPattern } from "src/types/cardpatterns";
 
 interface Props extends SVGProps<SVGSVGElement> {
   value: number;
