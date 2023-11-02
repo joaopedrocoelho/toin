@@ -1,15 +1,17 @@
 import { CardClass } from "./Card";
+import { deckCards } from "./cards";
 
-export class Deck {
+export class DeckClass {
   cards: CardClass[];
   constructor() {
-    this.cards = [];
-    this.cards = [];
+    this.cards = deckCards;
+    this.shuffle();
   }
   addCard(card: CardClass) {
     this.cards.push(card);
   }
   getCards() {
+    console.log(this.cards);
     return this.cards;
   }
   getCard(index: number) {
@@ -30,10 +32,11 @@ export class Deck {
     return this.cards.shift();
   }
   drawCards(count: number) {
-    const cards = [];
-    for (let i = 0; i < count; i++) {
-      cards.push(this.drawCard());
+    const playerCards: CardClass[] = [];
+    for (let i = 0; i <= count; i++) {
+      if (this.cards.length > 0) playerCards.push(this.drawCard()!);
     }
-    return cards;
+    console.log("playerCards", playerCards);
+    return playerCards;
   }
 }

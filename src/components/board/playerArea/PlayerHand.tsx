@@ -5,15 +5,15 @@ import SelectedCardModal from "src/components/modals/SelectedCardModal";
 import { ModalContext } from "src/context/modalContext";
 
 export interface PlayerHandProps {
-  cards: CardClass[];
+  hand: CardClass[];
 }
 
-const PlayerHand = ({ cards }: PlayerHandProps) => {
+const PlayerHand = ({ hand }: PlayerHandProps) => {
   const { setModal } = useContext(ModalContext);
 
   return (
     <div className="flex w-full relative">
-      {cards.map((card, index) => {
+      {hand.map((card, index) => {
         return (
           <div
             className="relative hover:-translate-y-7 cursor-pointer transition-transform"

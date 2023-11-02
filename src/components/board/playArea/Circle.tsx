@@ -8,8 +8,6 @@ const Circle = ({
 }: {
   circleArr?: Array<number>;
 }) => {
-  console.log(circleArr.length);
-
   return (
     <div className="circle border-[0.25px] border-white/30">
       {circleArr.map((value, index) => {

@@ -19,7 +19,7 @@ const Board = ({
 }: BoardProps) => {
   const buildLines = Array.from({ length: 24 }, () => "");
   return (
-    <div className="board">
+    <div className="board relative">
       <PlayerArrowsCircle />
       <Circle />
       <Circle />

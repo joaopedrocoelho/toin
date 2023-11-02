@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "./App.css";
-import PlayArea from "./components/board/PlayArea";
+import PlayArea from "./components/board/playArea/PlayArea";
 import { ModalContext } from "./context/modalContext";
 import { createPortal } from "react-dom";
 import { ToinContext, cardProp } from "./context/toinContext";
@@ -45,9 +45,8 @@ function App() {
         }}
       >
         {modal && open && createPortal(modal, document.body)}
-        <div className="flex w-full h-screen items-center justify-center">
-          <PlayArea />
-        </div>
+
+        <PlayArea />
       </ModalContext.Provider>
     </ToinContext.Provider>
   );
