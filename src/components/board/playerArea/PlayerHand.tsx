@@ -12,7 +12,7 @@ const PlayerHand = ({ hand }: PlayerHandProps) => {
   const { setModal } = useContext(ModalContext);
 
   return (
-    <div className="flex w-full relative">
+    <div className="flex w-full pt-7 relative items-end">
       {hand.map((card, index) => {
         return (
           <div

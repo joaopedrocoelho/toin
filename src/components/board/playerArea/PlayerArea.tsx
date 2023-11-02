@@ -7,9 +7,11 @@ import { Player } from "src/classes/Player";
 const PlayerArea = ({ player }: { player: Player }) => {
   const { card } = useContext(ToinContext);
   return (
-    <div className="flex w-full gap-x-5">
+    <div className="flex w-full items-center gap-5 mt-4 ml-[16%]">
       <ToinArea card={card} />
-      <PlayerHand hand={player.hand} />
+      <div className="max-w-[50%] overflow-x-scroll overflow-y-visible">
+        <PlayerHand hand={player.hand} />
+      </div>
     </div>
   );
 };

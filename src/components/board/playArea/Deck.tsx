@@ -8,6 +8,7 @@ const Deck = ({ cards }: { cards: CardClass[] }) => {
       {cards.map((card, index) => {
         return (
           <div
+            key={`${index}-${card.type}`}
             className="absolute w-[inherit] "
             style={{
               transform: `translateY(${index * -0.7}px)`,
@@ -15,7 +16,6 @@ const Deck = ({ cards }: { cards: CardClass[] }) => {
             }}
           >
             <Card
-              key={index}
               type={card.type}
               faceUp={false}
               cardProperties={card.getProperties()}
