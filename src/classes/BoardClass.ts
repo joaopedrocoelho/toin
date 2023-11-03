@@ -1,18 +1,25 @@
 import { FixedArray } from "src/types/helpers";
 
 export type layers = "outer" | "second" | "third" | "inner";
+
+export type BoardLayer = FixedArray<number, 24>;
+
+export const circleArr: FixedArray<number, 24> = [
+  4, 1, 2, 2, 3, 5, 1, 1, 4, 2, 3, 5, 5, 1, 2, 4, 3, 3, 2, 5, 4, 4, 1, 3,
+];
+
 export class BoardClass {
-  outerLayerArr: FixedArray<number, 24>;
-  secondLayerArr: FixedArray<number, 24>;
-  thirdLayerArr: FixedArray<number, 24>;
-  innerLayerArr: FixedArray<number, 24>;
+  outerLayerArr: BoardLayer;
+  secondLayerArr: BoardLayer;
+  thirdLayerArr: BoardLayer;
+  innerLayerArr: BoardLayer;
   rotateDirection: "clockwise" | "counterclockwise" = "clockwise";
 
   constructor(
-    outerLayerArr: FixedArray<number, 24>,
-    secondLayerArr: FixedArray<number, 24>,
-    thirdLayerArr: FixedArray<number, 24>,
-    innerLayerArr: FixedArray<number, 24>
+    outerLayerArr: BoardLayer,
+    secondLayerArr: BoardLayer,
+    thirdLayerArr: BoardLayer,
+    innerLayerArr: BoardLayer
   ) {
     this.outerLayerArr = outerLayerArr;
     this.secondLayerArr = secondLayerArr;

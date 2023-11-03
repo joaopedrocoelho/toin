@@ -1,16 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import "./circle.css";
 import Circle from "./Circle";
 import PlayerArrowsCircle from "./PlayerArrowsCircle";
-import { BoardClass } from "src/classes/BoardClass";
+import { BoardContext } from "src/context/boardContext";
 
-interface BoardProps {
-  board: BoardClass;
-}
-
-const Board = ({ board }: BoardProps) => {
-  const buildLines = Array.from({ length: 24 }, () => "");
+const Board = () => {
+  const { state, dispatch } = useContext(BoardContext);
   return (
     <div className="board relative">
       <PlayerArrowsCircle />
