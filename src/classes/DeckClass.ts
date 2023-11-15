@@ -11,7 +11,6 @@ export class DeckClass {
     this.cards.push(card);
   }
   getCards() {
-    console.log(this.cards);
     return this.cards;
   }
   getCard(index: number) {
@@ -36,7 +35,7 @@ export class DeckClass {
     for (let i = 0; i <= count; i++) {
       if (this.cards.length > 0) playerCards.push(this.drawCard()!);
     }
-    console.log("playerCards", playerCards);
+
     return playerCards;
   }
 }

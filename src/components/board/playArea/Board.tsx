@@ -4,6 +4,7 @@ import "./circle.css";
 import Circle from "./Circle";
 import PlayerArrowsCircle from "./PlayerArrowsCircle";
 import { BoardContext } from "src/context/boardContext";
+import { boardActionKind, rotateLayer } from "src/context/boardReducer";
 
 const Board = () => {
   const { state, dispatch } = useContext(BoardContext);
@@ -11,48 +12,45 @@ const Board = () => {
     <div className="board relative">
       <PlayerArrowsCircle />
       <Circle
-        circleArr={board.innerLayerArr}
+        circleArr={state.outerLayerArr}
         onClick={() => {
-          board.rotateInnerLayer();
-          console.log("clickedInner");
+          dispatch({
+            type: boardActionKind.ROTATE_OUTER,
+            payload: rotateLayer(state.outerLayerArr, state.rotateDirection),
+          });
+          console.log("clickedOuter");
         }}
       />
       <Circle
-        circleArr={board.thirdLayerArr}
+        circleArr={state.thirdLayerArr}
         onClick={() => {
+          dispatch({
+            type: boardActionKind.ROTATE_THIRD,
+            payload: rotateLayer(state.thirdLayerArr, state.rotateDirection),
+          });
           console.log("clickedThird");
         }}
       />
       <Circle
-        circleArr={board.secondLayerArr}
+        circleArr={state.secondLayerArr}
         onClick={() => {
+          dispatch({
+            type: boardActionKind.ROTATE_SECOND,
+            payload: rotateLayer(state.secondLayerArr, state.rotateDirection),
+          });
           console.log("clickedSecond");
         }}
       />
       <Circle
-        circleArr={board.outerLayerArr}
+        circleArr={state.innerLayerArr}
         onClick={() => {
-          console.log("clickedOuter");
+          dispatch({
+            type: boardActionKind.ROTATE_INNER,
+            payload: rotateLayer(state.innerLayerArr, state.rotateDirection),
+          });
+          console.log("clickedInner");
         }}
       />
-      {/* <div
-        className="flex justify-center absolute w-full h-full rounded-full"
-        style={{
-          transform: `rotate(7.5deg)`,
-        }}
-      >
-        {buildLines.map((value, index) => {
-          return (
-            <div
-              className="h-full w-[0.5px] bg-white/30 absolute"
-              style={{
-                transform: `rotate(${index * 15}deg)`,
-              }}
-              key={`${index}-line`}
-            ></div>
-          );
-        })}
-      </div> */}
       <div className="board-center"></div>
     </div>
   );

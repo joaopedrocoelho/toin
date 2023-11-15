@@ -8,6 +8,8 @@ export const circleArr: FixedArray<number, 24> = [
   4, 1, 2, 2, 3, 5, 1, 1, 4, 2, 3, 5, 5, 1, 2, 4, 3, 3, 2, 5, 4, 4, 1, 3,
 ];
 
+//not sure if I will still use this class
+
 export class BoardClass {
   outerLayerArr: BoardLayer;
   secondLayerArr: BoardLayer;

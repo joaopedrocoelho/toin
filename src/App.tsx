@@ -5,7 +5,7 @@ import { ModalContext } from "./context/modalContext";
 import { createPortal } from "react-dom";
 import { ToinContext, cardProp } from "./context/toinContext";
 import { CardClass } from "./classes/Card";
-import { BoardClass, circleArr } from "./classes/BoardClass";
+import { circleArr } from "./classes/BoardClass";
 import { boardReducer } from "./context/boardReducer";
 import { BoardContext } from "./context/boardContext";
 
@@ -17,6 +17,7 @@ function App() {
     secondLayerArr: circleArr,
     thirdLayerArr: circleArr,
     innerLayerArr: circleArr,
+    rotateDirection: "clockwise",
   });
 
   const setModal = (modal: JSX.Element | null) => {

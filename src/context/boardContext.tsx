@@ -18,6 +18,7 @@ export const BoardContext = createContext<BoardContextProps>({
     secondLayerArr: dummyLayer,
     thirdLayerArr: dummyLayer,
     innerLayerArr: dummyLayer,
+    rotateDirection: "clockwise",
   },
   dispatch: (value) => {
     console.log(value);
