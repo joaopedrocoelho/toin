@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Board from "./Board";
 import PlayerArea from "../playerArea/PlayerArea";
 import Deck from "./Deck";
@@ -6,12 +6,17 @@ import { DeckClass } from "src/classes/DeckClass";
 import { Player } from "src/classes/Player";
 import { BoardClass } from "src/classes/BoardClass";
 import { FixedArray } from "src/types/helpers";
+import { DeckContext } from "src/context/deckContext";
+import { PlayerContext } from "src/context/playerContext";
 
 const PlayArea = () => {
-  const deck = new DeckClass();
-  const player = new Player(1, "player1", 11);
+  const { deck } = useContext(DeckContext);
+  const { player } = useContext(PlayerContext);
 
-  player.addStartingHand(deck.drawCards(5));
+  useEffect(() => {
+    player.addStartingHand(deck.drawCards(5));
+  }, [deck]);
+
   return (
     <div className="flex w-full relative justify-center items-center">
       <div className="relative w-fit h-fit">

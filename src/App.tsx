@@ -8,6 +8,11 @@ import { CardClass } from "./classes/Card";
 import { circleArr } from "./classes/BoardClass";
 import { boardReducer } from "./context/boardReducer";
 import { BoardContext } from "./context/boardContext";
+import { DeckClass } from "./classes/DeckClass";
+import Deck from "./components/board/playArea/Deck";
+import { DeckContext } from "./context/deckContext";
+import { Player } from "./classes/Player";
+import { PlayerContext } from "./context/playerContext";
 
 function App() {
   const [modal, setNewModal] = useState<JSX.Element | null>(null);
@@ -36,35 +41,53 @@ function App() {
 
   const [card, setCard] = useState<cardProp>(null);
 
+  const [deck, setDeck] = useState<DeckClass>(new DeckClass());
+
+  const [player, setPlayer] = useState<Player>(new Player(1, "player1", 11));
+
   return (
-    <BoardContext.Provider
+    <DeckContext.Provider
       value={{
-        state,
-        dispatch,
+        deck,
+        setDeck,
       }}
     >
-      <ToinContext.Provider
+      <PlayerContext.Provider
         value={{
-          card,
-          setCard: (card: CardClass | null) => {
-            setCard(card);
-          },
+          player,
+          setPlayer,
         }}
       >
-        <ModalContext.Provider
+        <BoardContext.Provider
           value={{
-            ModalComponent: modal,
-            setModal,
-            closeModal,
-            open,
+            state,
+            dispatch,
           }}
         >
-          {modal && open && createPortal(modal, document.body)}
+          <ToinContext.Provider
+            value={{
+              card,
+              setCard: (card: CardClass | null) => {
+                setCard(card);
+              },
+            }}
+          >
+            <ModalContext.Provider
+              value={{
+                ModalComponent: modal,
+                setModal,
+                closeModal,
+                open,
+              }}
+            >
+              {modal && open && createPortal(modal, document.body)}
 
-          <PlayArea />
-        </ModalContext.Provider>
-      </ToinContext.Provider>
-    </BoardContext.Provider>
+              <PlayArea />
+            </ModalContext.Provider>
+          </ToinContext.Provider>
+        </BoardContext.Provider>
+      </PlayerContext.Provider>
+    </DeckContext.Provider>
   );
 }
 
