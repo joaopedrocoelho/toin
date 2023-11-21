@@ -1,8 +1,8 @@
 import React from "react";
-import { CardClass } from "src/classes/Card";
 import Card from "../../cards/Card";
+import { CardObj } from "src/context/deckContext";
 
-const Deck = ({ cards }: { cards: CardClass[] }) => {
+const Deck = ({ cards }: { cards: CardObj[] }) => {
   return (
     <div className="relative aspect-[8/11] min-w-[150px] cursor-pointer">
       {cards.map((card, index) => {
@@ -18,7 +18,7 @@ const Deck = ({ cards }: { cards: CardClass[] }) => {
             <Card
               type={card.type}
               faceUp={false}
-              cardProperties={card.getProperties()}
+              cardProperties={card.properties}
             />
           </div>
         );

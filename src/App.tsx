@@ -1,4 +1,4 @@
-import { useReducer, useState } from "react";
+import { useEffect, useReducer, useState } from "react";
 import "./App.css";
 import PlayArea from "./components/board/playArea/PlayArea";
 import { ModalContext } from "./context/modalContext";
@@ -8,11 +8,9 @@ import { CardClass } from "./classes/Card";
 import { circleArr } from "./classes/BoardClass";
 import { boardReducer } from "./context/boardReducer";
 import { BoardContext } from "./context/boardContext";
-import { DeckClass } from "./classes/DeckClass";
-import Deck from "./components/board/playArea/Deck";
-import { DeckContext } from "./context/deckContext";
-import { Player } from "./classes/Player";
-import { PlayerContext } from "./context/playerContext";
+
+import { CardObj, DeckContext } from "./context/deckContext";
+import { PlayerContext, PlayerObj } from "./context/playerContext";
 
 function App() {
   const [modal, setNewModal] = useState<JSX.Element | null>(null);
@@ -41,9 +39,9 @@ function App() {
 
   const [card, setCard] = useState<cardProp>(null);
 
-  const [deck, setDeck] = useState<DeckClass>(new DeckClass());
+  const [deck, setDeck] = useState<CardObj[]>([]);
 
-  const [player, setPlayer] = useState<Player>(new Player(1, "player1", 11));
+  const [player, setPlayer] = useState<PlayerObj>();
 
   return (
     <DeckContext.Provider
