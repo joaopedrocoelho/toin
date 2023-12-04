@@ -10,11 +10,13 @@ import { boardReducer } from "./context/boardReducer";
 import { BoardContext } from "./context/boardContext";
 
 import { CardObj, DeckContext } from "./context/deckContext";
-import { PlayerContext, PlayerObj } from "./context/playerContext";
+import { PlayerContext } from "./context/playerContext";
+import StartGameModal from "./components/modals/StartGameModal";
+import { PlayerObj } from "./context/playerReducer";
 
 function App() {
-  const [modal, setNewModal] = useState<JSX.Element | null>(null);
-  const [open, setOpen] = useState<boolean>(false);
+  const [modal, setNewModal] = useState<JSX.Element | null>(<StartGameModal />);
+  const [open, setOpen] = useState<boolean>(true);
   const [state, dispatch] = useReducer(boardReducer, {
     outerLayerArr: circleArr,
     secondLayerArr: circleArr,
@@ -65,7 +67,7 @@ function App() {
           <ToinContext.Provider
             value={{
               card,
-              setCard: (card: CardClass | null) => {
+              setCard: (card: CardObj | null) => {
                 setCard(card);
               },
             }}

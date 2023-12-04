@@ -1,19 +1,6 @@
 import { createContext } from "react";
-import { CardClass } from "src/classes/Card";
-import { Player } from "src/classes/Player";
+import { PlayerObj } from "./playerReducer";
 
-export interface PlayerArrowObj {
-  playerId: number;
-  arrowIndex: number; //relative to the board
-  activeMatrix: number[][];
-}
-export interface PlayerObj {
-  id: number;
-  name: string;
-  score: number;
-  hand: CardClass[];
-  arrow: PlayerArrowObj;
-}
 interface playerContextProps {
   player: PlayerObj | undefined;
   setPlayer: React.Dispatch<React.SetStateAction<PlayerObj | undefined>>;

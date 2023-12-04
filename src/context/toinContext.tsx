@@ -1,7 +1,8 @@
 import { createContext } from "react";
 import { CardClass } from "src/classes/Card";
+import { CardObj } from "./deckContext";
 
-export type cardProp = CardClass | null;
+export type cardProp = CardObj | null;
 
 export interface ToinContextProps {
   card: cardProp;
@@ -10,7 +11,7 @@ export interface ToinContextProps {
 
 export const ToinContext = createContext<ToinContextProps>({
   card: null,
-  setCard: (card: CardClass | null) => {
+  setCard: (card: CardObj | null) => {
     console.log(card);
   },
 });

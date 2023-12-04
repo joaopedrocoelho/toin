@@ -1,3 +1,4 @@
+import { CardObj } from "src/context/deckContext";
 import { PointCardProperties } from "./PointCard";
 
 export type cardTypes = "PointCard" | "ActionCard" | "WildCard";
@@ -32,4 +33,12 @@ export abstract class CardClass {
   }
 
   abstract getProperties(): cardProperties;
+
+  toCardObj() {
+    return {
+      type: this._type,
+      faceUp: this._faceUp,
+      properties: this.getProperties(),
+    } as CardObj;
+  }
 }

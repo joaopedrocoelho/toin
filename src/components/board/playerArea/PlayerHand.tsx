@@ -1,11 +1,11 @@
 import React, { useContext } from "react";
-import { CardClass } from "src/classes/Card";
 import Card from "src/components/cards/Card";
 import SelectedCardModal from "src/components/modals/SelectedCardModal";
+import { CardObj } from "src/context/deckContext";
 import { ModalContext } from "src/context/modalContext";
 
 export interface PlayerHandProps {
-  hand: CardClass[];
+  hand: CardObj[];
 }
 
 const PlayerHand = ({ hand }: PlayerHandProps) => {
@@ -27,7 +27,7 @@ const PlayerHand = ({ hand }: PlayerHandProps) => {
               key={index}
               type={card.type}
               faceUp={true}
-              cardProperties={card.getProperties()}
+              cardProperties={card.properties}
             />
           </div>
         );

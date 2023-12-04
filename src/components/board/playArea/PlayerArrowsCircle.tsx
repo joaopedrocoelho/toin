@@ -3,7 +3,7 @@ import "./circle.css";
 
 const PlayerArrowsCircle = ({
   circleArr = [
-    //                       center
+    //                       center idx 12
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
   ],
 }: {

@@ -67,3 +67,24 @@ export function rotateLayer(
 
   return layerCopy as BoardLayer;
 }
+
+export function getActiveMatrix(state: boardState, arrowIdx: number) {
+  const { outerLayerArr, secondLayerArr, thirdLayerArr, innerLayerArr } = state;
+
+  //need 3 numbers : the arrowIdx, the arrowIdx-1 and arrowIdx+1
+  const prevIdx = arrowIdx - 1 < 0 ? outerLayerArr.length - 1 : arrowIdx - 1;
+  const nextIdx = arrowIdx + 1 > outerLayerArr.length - 1 ? 0 : arrowIdx + 1;
+
+  const activeMatrix: number[][] = [
+    [innerLayerArr[prevIdx], innerLayerArr[arrowIdx], innerLayerArr[nextIdx]],
+    [
+      secondLayerArr[prevIdx],
+      secondLayerArr[arrowIdx],
+      secondLayerArr[nextIdx],
+    ],
+    [thirdLayerArr[prevIdx], thirdLayerArr[arrowIdx], thirdLayerArr[nextIdx]],
+    [outerLayerArr[prevIdx], outerLayerArr[arrowIdx], outerLayerArr[nextIdx]],
+  ];
+
+  return activeMatrix;
+}

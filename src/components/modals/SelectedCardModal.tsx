@@ -4,8 +4,9 @@ import { ModalContext } from "src/context/modalContext";
 import { CardClass } from "src/classes/Card";
 import Card from "../cards/Card";
 import { ToinContext } from "src/context/toinContext";
+import { CardObj } from "src/context/deckContext";
 
-const SelectedCardModal = ({ card }: { card: CardClass }) => {
+const SelectedCardModal = ({ card }: { card: CardObj }) => {
   const { closeModal } = useContext(ModalContext);
   const { setCard } = useContext(ToinContext);
 
@@ -32,7 +33,7 @@ const SelectedCardModal = ({ card }: { card: CardClass }) => {
             height="350px"
             type={card.type}
             faceUp={true}
-            cardProperties={card.getProperties()}
+            cardProperties={card.properties}
           />
         </div>
         <div className="flex gap-x-8 mt-16">
