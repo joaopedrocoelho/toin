@@ -4,7 +4,6 @@ import { CardObj } from "./deckContext";
 export interface PlayerArrowObj {
   playerId: number;
   arrowIndex: number; //relative to the board
-  activeMatrix: number[][];
 }
 
 export interface PlayerObj {
@@ -19,6 +18,7 @@ export enum playerActionKind {
   SET_PLAYER,
   SET_HAND,
   REMOVE_CARD,
+  PLAY_CARD,
 }
 
 export type setPlayerAction = {
@@ -36,7 +36,16 @@ export type removeCardAction = {
   payload: number;
 };
 
-export type playerAction = setPlayerAction | setHandAction | removeCardAction;
+export type playCardAction = {
+  type: playerActionKind.PLAY_CARD;
+  payload: number;
+};
+
+export type playerAction =
+  | setPlayerAction
+  | setHandAction
+  | removeCardAction
+  | playCardAction;
 
 export const playerReducer: Reducer<PlayerObj, playerAction> = (
   state,
@@ -60,6 +69,13 @@ export const playerReducer: Reducer<PlayerObj, playerAction> = (
         ...state,
         hand: removeCard(state.hand, payload),
       };
+
+    case playerActionKind.PLAY_CARD:
+      return {
+        ...state,
+        score: state.score + playCard(state.hand, payload),
+        hand: removeCard(state.hand, payload),
+      };
   }
 };
 
@@ -67,4 +83,24 @@ export function removeCard(hand: CardObj[], cardIdx: number) {
   const handCopy = [...hand];
   handCopy.splice(cardIdx, 1);
   return handCopy;
+}
+
+export function playCard(hand: CardObj[], cardIdx: number) {
+  const score = hand[cardIdx].properties.points;
+
+  return score;
+}
+
+export function canPlay(card: CardObj, activeMatrix: number[][]): boolean {
+  // [
+  //   [4, 2, 3],
+  //   [1, 1, 4],
+  //   [4, 2, 3],
+  //   [2, 3, 5],
+  // ];
+
+  const isSameTypePattern =
+    card.properties.pattern[3].filter((x) => x != 0)[0] === 1;
+
+  return false;
 }

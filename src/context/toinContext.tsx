@@ -1,5 +1,4 @@
 import { createContext } from "react";
-import { CardClass } from "src/classes/Card";
 import { CardObj } from "./deckContext";
 
 export type cardProp = CardObj | null;

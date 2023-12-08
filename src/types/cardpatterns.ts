@@ -7,6 +7,8 @@ export interface PointCard {
   pattern: pointCardPattern;
 }
 
+//Same Pattern has a red star symbol and different has a green pentagon symbol
+
 export const ThreeSamePattern: pointCardPattern = [
   [0, 0, 0],
   [0, 1, 0],

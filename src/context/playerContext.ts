@@ -15,7 +15,6 @@ export const PlayerContext = createContext<playerContextProps>({
     arrow: {
       playerId: 0,
       arrowIndex: 0,
-      activeMatrix: [],
     },
   },
   dispatch: (player) => {

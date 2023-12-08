@@ -25,8 +25,7 @@ const StartGameModal = () => {
         id: 1,
         arrow: {
           playerId: 1,
-          arrowIndex: 12,
-          activeMatrix: getActiveMatrix(state, 12),
+          arrowIndex: 11,
         },
       },
     });

@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import ModalWrapper from "./ModalWrapper";
 import { ModalContext } from "src/context/modalContext";
 import Card from "../cards/Card";
@@ -6,6 +6,8 @@ import { ToinContext } from "src/context/toinContext";
 import { CardObj } from "src/context/deckContext";
 import { PlayerContext } from "src/context/playerContext";
 import { playerActionKind } from "src/context/playerReducer";
+import { BoardContext } from "src/context/boardContext";
+import { getActiveMatrix } from "src/context/boardReducer";
 
 const SelectedCardModal = ({
   card,
@@ -16,9 +18,20 @@ const SelectedCardModal = ({
 }) => {
   const { closeModal } = useContext(ModalContext);
   const { setCard } = useContext(ToinContext);
-  const { state, dispatch } = useContext(PlayerContext);
+  const { state: playerState, dispatch: playerDispatch } =
+    useContext(PlayerContext);
+  const { state: boardState, dispatch: boardDispatch } =
+    useContext(BoardContext);
 
   const [rotated, setRotated] = useState<boolean>(false);
+
+  useEffect(() => {
+    console.log(
+      "activeMatrix: ",
+      getActiveMatrix(boardState, playerState.arrow.arrowIndex)
+    );
+  }, [boardState, playerState]);
+
   return (
     <ModalWrapper>
       <div className="w-[80vw] h-5/6 flex gap-y-4 flex-col items-center justify-center glass p-6 pt-10 relative">
@@ -49,7 +62,7 @@ const SelectedCardModal = ({
             className="bg-amber-300 p-4 rounded-lg font-bold min-w-[200px] text-amber-950"
             onClick={() => {
               setCard(card);
-              dispatch({
+              playerDispatch({
                 type: playerActionKind.REMOVE_CARD,
                 payload: cardIdx,
               });
