@@ -20,7 +20,7 @@ const PlayerHand = ({ hand }: PlayerHandProps) => {
             key={index}
             data-testid="player-hand-card"
             onClick={() => {
-              setModal(<SelectedCardModal card={card} />);
+              setModal(<SelectedCardModal card={card} cardIdx={index} />);
             }}
           >
             <Card

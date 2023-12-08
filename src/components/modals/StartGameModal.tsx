@@ -6,24 +6,28 @@ import { deckCards } from "src/classes/cards";
 import { BoardContext } from "src/context/boardContext";
 import { getActiveMatrix } from "src/context/boardReducer";
 import { ModalContext } from "src/context/modalContext";
+import { playerActionKind } from "src/context/playerReducer";
 
 const StartGameModal = () => {
   const { setDeck } = useContext(DeckContext);
-  const { setPlayer } = useContext(PlayerContext);
+  const { dispatch: playerDispatch } = useContext(PlayerContext);
   const { state, dispatch } = useContext(BoardContext);
   const { closeModal } = useContext(ModalContext);
   const startGame = () => {
     const { cards, deck } = drawCards(7, shuffle(deckCards));
     setDeck(deck);
-    setPlayer({
-      hand: cards,
-      score: 0,
-      name: "Player 1",
-      id: 1,
-      arrow: {
-        playerId: 1,
-        arrowIndex: 12,
-        activeMatrix: getActiveMatrix(state, 12),
+    playerDispatch({
+      type: playerActionKind.SET_PLAYER,
+      payload: {
+        hand: cards,
+        score: 0,
+        name: "Player 1",
+        id: 1,
+        arrow: {
+          playerId: 1,
+          arrowIndex: 12,
+          activeMatrix: getActiveMatrix(state, 12),
+        },
       },
     });
 

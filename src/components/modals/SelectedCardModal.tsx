@@ -1,14 +1,22 @@
 import React, { useContext, useState } from "react";
 import ModalWrapper from "./ModalWrapper";
 import { ModalContext } from "src/context/modalContext";
-import { CardClass } from "src/classes/Card";
 import Card from "../cards/Card";
 import { ToinContext } from "src/context/toinContext";
 import { CardObj } from "src/context/deckContext";
+import { PlayerContext } from "src/context/playerContext";
+import { playerActionKind } from "src/context/playerReducer";
 
-const SelectedCardModal = ({ card }: { card: CardObj }) => {
+const SelectedCardModal = ({
+  card,
+  cardIdx,
+}: {
+  card: CardObj;
+  cardIdx: number;
+}) => {
   const { closeModal } = useContext(ModalContext);
   const { setCard } = useContext(ToinContext);
+  const { state, dispatch } = useContext(PlayerContext);
 
   const [rotated, setRotated] = useState<boolean>(false);
   return (
@@ -41,6 +49,10 @@ const SelectedCardModal = ({ card }: { card: CardObj }) => {
             className="bg-amber-300 p-4 rounded-lg font-bold min-w-[200px] text-amber-950"
             onClick={() => {
               setCard(card);
+              dispatch({
+                type: playerActionKind.REMOVE_CARD,
+                payload: cardIdx,
+              });
               closeModal();
             }}
           >

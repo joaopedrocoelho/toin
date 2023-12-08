@@ -12,7 +12,7 @@ import { BoardContext } from "./context/boardContext";
 import { CardObj, DeckContext } from "./context/deckContext";
 import { PlayerContext } from "./context/playerContext";
 import StartGameModal from "./components/modals/StartGameModal";
-import { PlayerObj } from "./context/playerReducer";
+import { PlayerObj, playerReducer } from "./context/playerReducer";
 
 function App() {
   const [modal, setNewModal] = useState<JSX.Element | null>(<StartGameModal />);
@@ -43,7 +43,17 @@ function App() {
 
   const [deck, setDeck] = useState<CardObj[]>([]);
 
-  const [player, setPlayer] = useState<PlayerObj>();
+  const [playerState, playerDispatch] = useReducer(playerReducer, {
+    hand: [],
+    score: 0,
+    name: "",
+    id: 1,
+    arrow: {
+      playerId: 1,
+      arrowIndex: 12,
+      activeMatrix: [],
+    },
+  });
 
   return (
     <DeckContext.Provider
@@ -54,8 +64,8 @@ function App() {
     >
       <PlayerContext.Provider
         value={{
-          player,
-          setPlayer,
+          state: playerState,
+          dispatch: playerDispatch,
         }}
       >
         <BoardContext.Provider

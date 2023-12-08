@@ -8,7 +8,7 @@ import { PlayerContext } from "src/context/playerContext";
 
 const PlayArea = () => {
   const { deck } = useContext(DeckContext);
-  const { player } = useContext(PlayerContext);
+  const { state } = useContext(PlayerContext);
 
   return (
     <div className="flex w-full relative justify-center items-center">
@@ -21,7 +21,7 @@ const PlayArea = () => {
           <Board />
         </div>
 
-        <PlayerArea player={player} />
+        <PlayerArea player={state} />
       </div>
     </div>
   );
