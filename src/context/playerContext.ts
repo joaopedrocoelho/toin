@@ -1,13 +1,13 @@
-import { createContext } from "react";
-import { PlayerObj } from "./playerReducer";
+import { Dispatch, createContext } from "react";
+import { PlayerObj, playerAction } from "./playerReducer";
 
 interface playerContextProps {
-  player: PlayerObj | undefined;
-  setPlayer: React.Dispatch<React.SetStateAction<PlayerObj | undefined>>;
+  state: PlayerObj;
+  dispatch: Dispatch<playerAction>;
 }
 
 export const PlayerContext = createContext<playerContextProps>({
-  player: {
+  state: {
     id: 0,
     name: "",
     score: 0,
@@ -18,7 +18,7 @@ export const PlayerContext = createContext<playerContextProps>({
       activeMatrix: [],
     },
   },
-  setPlayer: (player) => {
+  dispatch: (player) => {
     console.log(player);
   },
 });
