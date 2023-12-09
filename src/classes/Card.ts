@@ -1,9 +1,5 @@
-import { CardObj } from "src/context/deckContext";
-import { PointCardProperties } from "./PointCard";
+import { CardObj, cardProperties, cardTypes } from "src/types/card";
 
-export type cardTypes = "PointCard" | "ActionCard" | "WildCard";
-
-export type cardProperties = PointCardProperties;
 export abstract class CardClass {
   private _type: cardTypes;
   private _faceUp: boolean = false;

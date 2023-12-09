@@ -3,9 +3,6 @@ import { FixedArray } from "./helpers";
 export type pointCardPattern = FixedArray<0 | 1 | 2, 3>[];
 
 //Point Cards
-export interface PointCard {
-  pattern: pointCardPattern;
-}
 
 //Same Pattern has a red star symbol and different has a green pentagon symbol
 

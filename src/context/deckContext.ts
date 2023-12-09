@@ -1,17 +1,6 @@
 import { createContext } from "react";
-import { cardProperties, cardTypes } from "src/classes/Card";
-import { PointCardProperties } from "src/classes/PointCard";
 
-export interface CardObj {
-  type: cardTypes;
-  faceUp: boolean;
-  properties: cardProperties;
-}
-
-export interface PointCard extends CardObj {
-  type: "PointCard";
-  properties: PointCardProperties;
-}
+import { CardObj } from "src/types/card";
 
 interface deckContextProps {
   deck: CardObj[];

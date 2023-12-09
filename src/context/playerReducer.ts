@@ -1,5 +1,5 @@
 import { Reducer } from "react";
-import { CardObj } from "./deckContext";
+import { CardObj } from "src/types/card";
 
 export interface PlayerArrowObj {
   playerId: number;
