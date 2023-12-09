@@ -4,7 +4,6 @@ import { DeckContext, drawCards, shuffle } from "src/context/deckContext";
 import { PlayerContext } from "src/context/playerContext";
 import { deckCards } from "src/classes/cards";
 import { BoardContext } from "src/context/boardContext";
-import { getActiveMatrix } from "src/context/boardReducer";
 import { ModalContext } from "src/context/modalContext";
 import { playerActionKind } from "src/context/playerReducer";
 

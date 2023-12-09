@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
 import Card from "src/components/cards/Card";
 import SelectedCardModal from "src/components/modals/SelectedCardModal";
-import { CardObj } from "src/context/deckContext";
 import { ModalContext } from "src/context/modalContext";
+import { CardObj } from "src/types/card";
 
 export interface PlayerHandProps {
   hand: CardObj[];

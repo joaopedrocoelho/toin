@@ -1,7 +1,8 @@
 import React from "react";
-import { cardProperties, cardTypes } from "src/classes/Card";
+
 import FaceDownCard from "./FaceDownCard";
 import PointCardTemplate from "./PointCardTemplate";
+import { cardProperties, cardTypes } from "src/types/card";
 
 //later should add other types
 

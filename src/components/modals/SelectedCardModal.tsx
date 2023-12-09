@@ -3,11 +3,16 @@ import ModalWrapper from "./ModalWrapper";
 import { ModalContext } from "src/context/modalContext";
 import Card from "../cards/Card";
 import { ToinContext } from "src/context/toinContext";
-import { CardObj } from "src/context/deckContext";
 import { PlayerContext } from "src/context/playerContext";
 import { playerActionKind } from "src/context/playerReducer";
 import { BoardContext } from "src/context/boardContext";
 import { getActiveMatrix } from "src/context/boardReducer";
+import {
+  canPlayCard,
+  convertActiveMatrixToObjBasedOnPattern,
+  convertPatternToObj,
+} from "src/types/cardpatterns";
+import { CardObj } from "src/types/card";
 
 const SelectedCardModal = ({
   card,
@@ -27,10 +32,13 @@ const SelectedCardModal = ({
 
   useEffect(() => {
     console.log(
-      "activeMatrix: ",
-      getActiveMatrix(boardState, playerState.arrow.arrowIndex)
+      "canPlay",
+      canPlayCard(
+        getActiveMatrix(boardState, playerState.arrow.arrowIndex),
+        card
+      )
     );
-  }, [boardState, playerState]);
+  });
 
   return (
     <ModalWrapper>
@@ -57,6 +65,12 @@ const SelectedCardModal = ({
             cardProperties={card.properties}
           />
         </div>
+        <h2 className="text-2xl font-bold text-gray-900">
+          {canPlayCard(
+            getActiveMatrix(boardState, playerState.arrow.arrowIndex),
+            card
+          )}
+        </h2>
         <div className="flex gap-x-8 mt-16">
           <button
             className="bg-amber-300 p-4 rounded-lg font-bold min-w-[200px] text-amber-950"

@@ -4,15 +4,20 @@ import PlayArea from "./components/board/playArea/PlayArea";
 import { ModalContext } from "./context/modalContext";
 import { createPortal } from "react-dom";
 import { ToinContext, cardProp } from "./context/toinContext";
-import { CardClass } from "./classes/Card";
 import { circleArr } from "./classes/BoardClass";
 import { boardReducer } from "./context/boardReducer";
 import { BoardContext } from "./context/boardContext";
 
-import { CardObj, DeckContext } from "./context/deckContext";
+import { DeckContext } from "./context/deckContext";
 import { PlayerContext } from "./context/playerContext";
 import StartGameModal from "./components/modals/StartGameModal";
-import { PlayerObj, playerReducer } from "./context/playerReducer";
+import {
+  PlayerObj,
+  playerAction,
+  playerReducer,
+} from "./context/playerReducer";
+import { CardObj } from "./types/card";
+import { allSameOneSidePattern, rotatePattern } from "./types/cardpatterns";
 
 function App() {
   const [modal, setNewModal] = useState<JSX.Element | null>(<StartGameModal />);
@@ -51,7 +56,6 @@ function App() {
     arrow: {
       playerId: 1,
       arrowIndex: 12,
-      activeMatrix: [],
     },
   });
 

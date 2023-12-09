@@ -99,8 +99,9 @@ export function canPlay(card: CardObj, activeMatrix: number[][]): boolean {
   //   [2, 3, 5],
   // ];
 
-  const isSameTypePattern =
-    card.properties.pattern[3].filter((x) => x != 0)[0] === 1;
+  // if (card.properties.sameSymbol) {
+
+  // }
 
   return false;
 }
