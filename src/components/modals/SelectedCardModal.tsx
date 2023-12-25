@@ -66,10 +66,10 @@ const SelectedCardModal = ({
           />
         </div>
         <h2 className="text-2xl font-bold text-gray-900">
-          {canPlayCard(
+          {/* {canPlayCard(
             getActiveMatrix(boardState, playerState.arrow.arrowIndex),
             card
-          )}
+          )} */}
         </h2>
         <div className="flex gap-x-8 mt-16">
           <button
