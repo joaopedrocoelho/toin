@@ -24,7 +24,7 @@ const StartGameModal = () => {
         id: 1,
         arrow: {
           playerId: 1,
-          arrowIndex: 11,
+          arrowIndex: 12,
         },
       },
     });
