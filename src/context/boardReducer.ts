@@ -75,10 +75,6 @@ export function getActiveMatrix(state: boardState, arrowIdx: number) {
   const prevIdx = arrowIdx - 1 < 0 ? outerLayerArr.length - 1 : arrowIdx - 1;
   const nextIdx = arrowIdx + 1 > outerLayerArr.length - 1 ? 0 : arrowIdx + 1;
 
-  console.log("prevIdx", prevIdx);
-  console.log("arrowIdx", arrowIdx);
-  console.log("nextIdx", nextIdx);
-
   const activeMatrix: number[][] = [
     [innerLayerArr[nextIdx], innerLayerArr[arrowIdx], innerLayerArr[prevIdx]],
     [
