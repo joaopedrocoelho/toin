@@ -15,13 +15,6 @@ export const ThreeSamePattern: pointCardPattern = [
   [0, 1, 0],
 ];
 
-const ThreeSameObj = {
-  1: [],
-  2: [1],
-  3: [1],
-  4: [1],
-};
-
 export const TwoSamePattern: pointCardPattern = [
   [0, 0, 0],
   [0, 0, 0],
@@ -91,97 +84,57 @@ export function rotatePattern(pattern: pointCardPattern) {
   return newPattern;
 }
 
-export function convertPatternToObj(pattern: pointCardPattern) {
-  const obj: Record<number, number[]> = {};
+export function convertPatternToObj(
+  pattern: pointCardPattern
+): Record<number, number> {
+  const obj: Record<number, number> = {};
   for (let i = 0; i < pattern.length; i++) {
-    obj[i] = [];
     for (let j = 0; j < pattern[i].length; j++) {
-      if (pattern[i][j] !== 0) obj[i].push(j);
+      if (pattern[i][j] !== 0) obj[i] = j;
     }
   }
 
+  console.log("patternObj", obj);
   return obj;
 }
 
 export function convertActiveMatrixToObjBasedOnPattern(
   activeMatrix: number[][],
-  patternObj: Record<number, number[]>
-) {
-  const obj: Record<number, number[]> = {
-    0: [],
-    1: [],
-    2: [],
-    3: [],
-  };
+  patternObj: Record<number, number>
+): Record<number, number> {
+  const obj: Record<number, number> = {};
 
   for (let i = 0; i < activeMatrix.length; i++) {
-    for (let j = 0; j < patternObj[i].length; j++) {
-      obj[i].push(activeMatrix[i][patternObj[i][j]]);
+    if (patternObj[i] !== undefined) {
+      obj[i] = activeMatrix[i][patternObj[i]];
     }
   }
   return obj;
 }
 export function canPlayCard(activeMatrix: number[][], card: CardObj) {
-  const patternObj = convertPatternToObj(card.properties.pattern);
-  const rotatedPatternObj = convertPatternToObj(
-    rotatePattern(card.properties.pattern)
-  );
+  //pattern numbers:
+  // 0 = empty
+  // 1 =  same symbol
+  // 2 = different symbol
+}
 
-  const activeMatrixObj = convertActiveMatrixToObjBasedOnPattern(
-    activeMatrix,
-    patternObj
-  );
-
-  const rotatedActiveMatrixObj = convertActiveMatrixToObjBasedOnPattern(
-    activeMatrix,
-    rotatedPatternObj
-  );
-
-  //if the card is a same symbol pattern card
-  if (card.properties.sameSymbol) {
-    const keySymbol = activeMatrixObj[0][0];
-    let canPlay = true;
-    let canPlayRotated = true;
-
-    for (const key in activeMatrixObj) {
-      for (let i = 0; i < activeMatrixObj[key].length; i++) {
-        if (activeMatrixObj[key][i] !== keySymbol) {
-          canPlay = false;
-        }
-      }
-    }
-    for (const key in rotatedActiveMatrixObj) {
-      for (let i = 0; i < rotatedActiveMatrixObj[key].length; i++) {
-        if (activeMatrixObj[key][i] !== keySymbol) {
-          canPlayRotated = false;
-        }
-      }
-    }
-
-    return canPlay || canPlayRotated;
-  } else {
-    const symbolsArr = [];
-    let canPlay = true;
-    let canPlayRotated = true;
-
-    for (const key in activeMatrixObj) {
-      for (let i = 0; i < activeMatrixObj[key].length; i++) {
-        symbolsArr.push(activeMatrixObj[key][i]);
-      }
-    }
-    canPlay = new Set(symbolsArr).size === symbolsArr.length;
-
-    const rotatedSymbolsArr = [];
-    for (const key in rotatedActiveMatrixObj) {
-      for (let i = 0; i < rotatedActiveMatrixObj[key].length; i++) {
-        if (activeMatrixObj[key][i] === 0) {
-          rotatedSymbolsArr.push(activeMatrixObj[key][i]);
-        }
-      }
-    }
-    canPlayRotated =
-      new Set(rotatedSymbolsArr).size === rotatedSymbolsArr.length;
-
-    return canPlay || canPlayRotated;
+export function checkSameSymbolPatternObj(
+  activeMatrixObj: Record<number, number>
+) {
+  const keySymbol = activeMatrixObj[3];
+  for (const prop in activeMatrixObj) {
+    if (activeMatrixObj[prop] !== keySymbol) return false;
   }
+  return true;
+}
+
+export function checkDiffSymbolPatternObj(
+  activeMatrixObj: Record<number, number>
+) {
+  const symbolSet = new Set();
+  for (const prop in activeMatrixObj) {
+    if (symbolSet.has(prop)) return false;
+    symbolSet.add(prop);
+  }
+  return true;
 }
