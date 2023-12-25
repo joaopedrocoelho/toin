@@ -1,13 +1,36 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 
 import "./circle.css";
 import Circle from "./Circle";
 import PlayerArrowsCircle from "./PlayerArrowsCircle";
 import { BoardContext } from "src/context/boardContext";
-import { boardActionKind, rotateLayer } from "src/context/boardReducer";
+import {
+  boardActionKind,
+  getActiveMatrix,
+  rotateLayer,
+} from "src/context/boardReducer";
+import { PlayerContext } from "src/context/playerContext";
+import {
+  ThreeSamePattern,
+  allDiffOneSidePattern,
+  allSameTwoSidePattern,
+  convertActiveMatrixToObjBasedOnPattern,
+  convertPatternToObj,
+} from "src/types/cardpatterns";
 
 const Board = () => {
   const { state, dispatch } = useContext(BoardContext);
+  const { state: playerState } = useContext(PlayerContext);
+
+  useEffect(() => {
+    console.log(
+      "testPattern",
+      convertActiveMatrixToObjBasedOnPattern(
+        getActiveMatrix(state, playerState.arrow.arrowIndex),
+        convertPatternToObj(allDiffOneSidePattern)
+      )
+    );
+  }, [state, playerState.arrow.arrowIndex]);
   return (
     <div className="board relative">
       <PlayerArrowsCircle />
