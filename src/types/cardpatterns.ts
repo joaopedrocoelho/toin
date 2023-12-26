@@ -116,6 +116,29 @@ export function canPlayCard(activeMatrix: number[][], card: CardObj) {
   // 0 = empty
   // 1 =  same symbol
   // 2 = different symbol
+  const patternObj = convertPatternToObj(card.properties.pattern);
+  const rotatedPatternObj = convertPatternToObj(
+    rotatePattern(card.properties.pattern)
+  );
+  const activeMatrixObj = convertActiveMatrixToObjBasedOnPattern(
+    activeMatrix,
+    patternObj
+  );
+
+  const rotatedActiveMatrixObj = convertActiveMatrixToObjBasedOnPattern(
+    activeMatrix,
+    rotatedPatternObj
+  );
+  if (card?.properties?.sameSymbol) {
+    return (
+      checkSameSymbolPatternObj(activeMatrixObj) ||
+      checkSameSymbolPatternObj(rotatedActiveMatrixObj)
+    );
+  }
+  return (
+    checkDiffSymbolPatternObj(activeMatrixObj) ||
+    checkDiffSymbolPatternObj(rotatedActiveMatrixObj)
+  );
 }
 
 export function checkSameSymbolPatternObj(
