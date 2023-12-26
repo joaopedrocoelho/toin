@@ -9,8 +9,6 @@ const PlayerArrowsCircle = ({
 }: {
   circleArr?: Array<number>;
 }) => {
-  console.log(circleArr.length);
-
   return (
     <div className="arrows-circle">
       {circleArr.map((value, index) => {

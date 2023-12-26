@@ -67,11 +67,8 @@ export class BoardClass {
   }
 
   rotateInnerLayer() {
-    console.log("this.innerLayerArr", this.innerLayerArr);
     this.rotateDirection === "clockwise"
       ? this.innerLayerArr.unshift(this.innerLayerArr.pop()!)
       : this.innerLayerArr.push(this.innerLayerArr.shift()!);
-
-    console.log("this.innerLayerArr", this.innerLayerArr);
   }
 }

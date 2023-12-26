@@ -22,15 +22,6 @@ const Board = () => {
   const { state, dispatch } = useContext(BoardContext);
   const { state: playerState } = useContext(PlayerContext);
 
-  useEffect(() => {
-    console.log(
-      "testPattern",
-      convertActiveMatrixToObjBasedOnPattern(
-        getActiveMatrix(state, playerState.arrow.arrowIndex),
-        convertPatternToObj(allDiffOneSidePattern)
-      )
-    );
-  }, [state, playerState.arrow.arrowIndex]);
   return (
     <div className="board relative">
       <PlayerArrowsCircle />
@@ -41,7 +32,6 @@ const Board = () => {
             type: boardActionKind.ROTATE_OUTER,
             payload: rotateLayer(state.outerLayerArr, state.rotateDirection),
           });
-          console.log("clickedOuter");
         }}
       />
       <Circle
@@ -51,7 +41,6 @@ const Board = () => {
             type: boardActionKind.ROTATE_THIRD,
             payload: rotateLayer(state.thirdLayerArr, state.rotateDirection),
           });
-          console.log("clickedThird");
         }}
       />
       <Circle
@@ -61,7 +50,6 @@ const Board = () => {
             type: boardActionKind.ROTATE_SECOND,
             payload: rotateLayer(state.secondLayerArr, state.rotateDirection),
           });
-          console.log("clickedSecond");
         }}
       />
       <Circle
@@ -71,7 +59,6 @@ const Board = () => {
             type: boardActionKind.ROTATE_INNER,
             payload: rotateLayer(state.innerLayerArr, state.rotateDirection),
           });
-          console.log("clickedInner");
         }}
       />
       <div className="board-center"></div>

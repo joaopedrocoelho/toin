@@ -30,16 +30,6 @@ const SelectedCardModal = ({
 
   const [rotated, setRotated] = useState<boolean>(false);
 
-  useEffect(() => {
-    console.log(
-      "canPlay",
-      canPlayCard(
-        getActiveMatrix(boardState, playerState.arrow.arrowIndex),
-        card
-      )
-    );
-  });
-
   return (
     <ModalWrapper>
       <div className="w-[80vw] h-5/6 flex gap-y-4 flex-col items-center justify-center glass p-6 pt-10 relative">
