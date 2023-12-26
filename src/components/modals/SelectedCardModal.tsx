@@ -55,14 +55,6 @@ const SelectedCardModal = ({
             cardProperties={card.properties}
           />
         </div>
-        <h2 className="text-2xl font-bold text-gray-900 CANPLAY">
-          {canPlayCard(
-            getActiveMatrix(boardState, playerState.arrow.arrowIndex),
-            card
-          )
-            ? "CAN PLAY"
-            : "CANNOT PLAY"}
-        </h2>
         <div className="flex gap-x-8 mt-16">
           <button
             className="bg-amber-300 p-4 rounded-lg font-bold min-w-[200px] text-amber-950"
@@ -77,9 +69,14 @@ const SelectedCardModal = ({
           >
             Place as Toin
           </button>
-          <button className="bg-red-400 p-4 rounded-lg font-bold min-w-[200px] text-red-950">
-            Play
-          </button>
+          {canPlayCard(
+            getActiveMatrix(boardState, playerState.arrow.arrowIndex),
+            card
+          ) && (
+            <button className="bg-red-400 p-4 rounded-lg font-bold min-w-[200px] text-red-950">
+              Play
+            </button>
+          )}
           <button
             className="bg-green-400 p-4 rounded-lg font-bold min-w-[200px] text-green-950"
             onClick={() => {

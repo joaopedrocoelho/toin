@@ -94,7 +94,6 @@ export function convertPatternToObj(
     }
   }
 
-  console.log("patternObj", obj);
   return obj;
 }
 
@@ -129,6 +128,7 @@ export function canPlayCard(activeMatrix: number[][], card: CardObj) {
     activeMatrix,
     rotatedPatternObj
   );
+
   if (card?.properties?.sameSymbol) {
     return (
       checkSameSymbolPatternObj(activeMatrixObj) ||
@@ -144,9 +144,21 @@ export function canPlayCard(activeMatrix: number[][], card: CardObj) {
 export function checkSameSymbolPatternObj(
   activeMatrixObj: Record<number, number>
 ) {
-  const keySymbol = activeMatrixObj[3];
+  let keySymbol = activeMatrixObj[3]; //the outermost layer
+  if (keySymbol === 5) {
+    //5 is the wild symbol number
+    const symbols = Object.values(activeMatrixObj);
+    for (let i = symbols.length - 1; i >= 0; i--) {
+      if (symbols[i] !== 5) {
+        keySymbol = symbols[i];
+        break;
+      }
+    }
+  }
+
   for (const prop in activeMatrixObj) {
-    if (activeMatrixObj[prop] !== keySymbol) return false;
+    if (activeMatrixObj[prop] !== keySymbol && activeMatrixObj[prop] !== 5)
+      return false;
   }
   return true;
 }
@@ -156,8 +168,9 @@ export function checkDiffSymbolPatternObj(
 ) {
   const symbolSet = new Set();
   for (const prop in activeMatrixObj) {
-    if (symbolSet.has(prop)) return false;
-    symbolSet.add(prop);
+    if (symbolSet.has(activeMatrixObj[prop]) && activeMatrixObj[prop] !== 5)
+      return false;
+    symbolSet.add(activeMatrixObj[prop]);
   }
   return true;
 }
