@@ -17,9 +17,7 @@ const PlayArea = () => {
       </div>
 
       <div className="flex flex-col w-fit h-fit">
-        <div>
-          <Board />
-        </div>
+        <Board />
 
         <PlayerArea player={state} />
       </div>

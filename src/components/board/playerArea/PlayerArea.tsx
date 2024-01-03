@@ -6,7 +6,7 @@ import { PlayerObj } from "src/context/playerReducer";
 
 const PlayerArea = ({ player }: { player: PlayerObj | undefined }) => {
   return (
-    <div className="flex w-full items-center gap-5 mt-4 ml-[16%]">
+    <div className="flex w-full items-center gap-5 mt-4 pl-[16%]">
       {player && (
         <>
           <ToinArea />
