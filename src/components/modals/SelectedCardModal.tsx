@@ -17,9 +17,11 @@ import { CardObj } from "src/types/card";
 const SelectedCardModal = ({
   card,
   cardIdx,
+  toin = false,
 }: {
   card: CardObj;
   cardIdx: number;
+  toin?: boolean;
 }) => {
   const { closeModal } = useContext(ModalContext);
   const { setCard } = useContext(ToinContext);
@@ -31,11 +33,19 @@ const SelectedCardModal = ({
   const [rotated, setRotated] = useState<boolean>(false);
 
   const playCard = (idx: number) => {
-    console.log("card", card);
     playerDispatch({
       type: playerActionKind.PLAY_CARD,
-      payload: idx,
+      payload: toin ? card.properties.points * 2 : card.properties.points,
     });
+    if (toin) {
+      setCard(null);
+    }
+    if (!toin) {
+      playerDispatch({
+        type: playerActionKind.REMOVE_CARD,
+        payload: idx,
+      });
+    }
   };
 
   return (
@@ -64,19 +74,21 @@ const SelectedCardModal = ({
           />
         </div>
         <div className="flex gap-x-8 mt-16">
-          <button
-            className="bg-amber-300 p-4 rounded-lg font-bold min-w-[200px] text-amber-950"
-            onClick={() => {
-              setCard(card);
-              playerDispatch({
-                type: playerActionKind.REMOVE_CARD,
-                payload: cardIdx,
-              });
-              closeModal();
-            }}
-          >
-            Place as Toin
-          </button>
+          {!toin && (
+            <button
+              className="bg-amber-300 p-4 rounded-lg font-bold min-w-[200px] text-amber-950"
+              onClick={() => {
+                setCard(card);
+                playerDispatch({
+                  type: playerActionKind.REMOVE_CARD,
+                  payload: cardIdx,
+                });
+                closeModal();
+              }}
+            >
+              Place as Toin
+            </button>
+          )}
           {canPlayCard(
             getActiveMatrix(boardState, playerState.arrow.arrowIndex),
             card

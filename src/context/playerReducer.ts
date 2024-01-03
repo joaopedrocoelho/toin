@@ -72,8 +72,7 @@ export const playerReducer: Reducer<PlayerObj, playerAction> = (
     case playerActionKind.PLAY_CARD:
       return {
         ...state,
-        score: state.score + playCard(state.hand, payload),
-        hand: removeCard(state.hand, payload),
+        score: state.score + payload,
       };
   }
 };
@@ -84,8 +83,8 @@ export function removeCard(hand: CardObj[], cardIdx: number) {
   return handCopy;
 }
 
-export function playCard(hand: CardObj[], cardIdx: number) {
-  const score = hand[cardIdx].properties.points;
+// export function playCard(hand: CardObj[], cardIdx: number) {
+//   const score = hand[cardIdx].properties.points;
 
-  return score;
-}
+//   return score;
+// }

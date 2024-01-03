@@ -1,5 +1,5 @@
 import { createContext } from "react";
-import { CardObj } from "./deckContext";
+import { CardObj } from "src/types/card";
 
 export type cardProp = CardObj | null;
 
