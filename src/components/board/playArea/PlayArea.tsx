@@ -5,6 +5,7 @@ import Deck from "./Deck";
 
 import { DeckContext } from "src/context/deckContext";
 import { PlayerContext } from "src/context/playerContext";
+import ScoreBoard from "../ScoreBoard";
 
 const PlayArea = () => {
   const { deck } = useContext(DeckContext);
@@ -17,7 +18,10 @@ const PlayArea = () => {
       </div>
 
       <div className="flex flex-col w-fit h-fit">
-        <Board />
+        <div className="flex gap-x-4 items-center">
+          <Board />
+          <ScoreBoard />
+        </div>
 
         <PlayerArea player={state} />
       </div>

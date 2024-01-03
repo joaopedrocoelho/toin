@@ -58,7 +58,6 @@ export const playerReducer: Reducer<PlayerObj, playerAction> = (
       return payload;
 
     case playerActionKind.SET_HAND:
-      console.log("payload", payload);
       return {
         ...state,
         hand: payload,
@@ -89,19 +88,4 @@ export function playCard(hand: CardObj[], cardIdx: number) {
   const score = hand[cardIdx].properties.points;
 
   return score;
-}
-
-export function canPlay(card: CardObj, activeMatrix: number[][]): boolean {
-  // [
-  //   [4, 2, 3],
-  //   [1, 1, 4],
-  //   [4, 2, 3],
-  //   [2, 3, 5],
-  // ];
-
-  // if (card.properties.sameSymbol) {
-
-  // }
-
-  return false;
 }

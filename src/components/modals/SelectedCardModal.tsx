@@ -30,6 +30,14 @@ const SelectedCardModal = ({
 
   const [rotated, setRotated] = useState<boolean>(false);
 
+  const playCard = (idx: number) => {
+    console.log("card", card);
+    playerDispatch({
+      type: playerActionKind.PLAY_CARD,
+      payload: idx,
+    });
+  };
+
   return (
     <ModalWrapper>
       <div className="w-[80vw] h-5/6 flex gap-y-4 flex-col items-center justify-center glass p-6 pt-10 relative">
@@ -73,7 +81,13 @@ const SelectedCardModal = ({
             getActiveMatrix(boardState, playerState.arrow.arrowIndex),
             card
           ) && (
-            <button className="bg-red-400 p-4 rounded-lg font-bold min-w-[200px] text-red-950">
+            <button
+              onClick={() => {
+                playCard(cardIdx);
+                closeModal();
+              }}
+              className="bg-red-400 p-4 rounded-lg font-bold min-w-[200px] text-red-950"
+            >
               Play
             </button>
           )}
