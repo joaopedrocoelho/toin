@@ -1,10 +1,11 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import PlayerHand from "./PlayerHand";
 import ToinArea from "./ToinArea";
 import { ToinContext } from "src/context/toinContext";
 import { PlayerObj } from "src/context/playerReducer";
 
 const PlayerArea = ({ player }: { player: PlayerObj | undefined }) => {
+  console.log("player", player);
   return (
     <div className="flex w-full items-center gap-5 mt-4 pl-[16%]">
       {player && (

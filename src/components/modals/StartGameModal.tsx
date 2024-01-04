@@ -21,9 +21,9 @@ const StartGameModal = () => {
         hand: cards,
         score: 0,
         name: "Player 1",
-        id: 1,
+        id: 0,
         arrow: {
-          playerId: 1,
+          playerId: 0,
           arrowIndex: 12,
         },
       },

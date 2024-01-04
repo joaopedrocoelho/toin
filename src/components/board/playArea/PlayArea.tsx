@@ -5,7 +5,7 @@ import Deck from "./Deck";
 
 import { DeckContext } from "src/context/deckContext";
 import { PlayerContext } from "src/context/playerContext";
-import ScoreBoard from "../ScoreBoard";
+import ScoreBoard from "../scoreboard/ScoreBoard";
 
 const PlayArea = () => {
   const { deck } = useContext(DeckContext);
@@ -23,7 +23,7 @@ const PlayArea = () => {
           <ScoreBoard />
         </div>
 
-        <PlayerArea player={state} />
+        <PlayerArea player={state.players[state.activePlayer]} />
       </div>
     </div>
   );

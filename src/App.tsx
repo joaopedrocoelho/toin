@@ -49,14 +49,8 @@ function App() {
   const [deck, setDeck] = useState<CardObj[]>([]);
 
   const [playerState, playerDispatch] = useReducer(playerReducer, {
-    hand: [],
-    score: 0,
-    name: "",
-    id: 1,
-    arrow: {
-      playerId: 1,
-      arrowIndex: 12,
-    },
+    activePlayer: 0,
+    players: [],
   });
 
   return (

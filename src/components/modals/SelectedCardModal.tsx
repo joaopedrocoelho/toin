@@ -35,7 +35,10 @@ const SelectedCardModal = ({
   const playCard = (idx: number) => {
     playerDispatch({
       type: playerActionKind.PLAY_CARD,
-      payload: toin ? card.properties.points * 2 : card.properties.points,
+      payload: {
+        points: toin ? card.properties.points * 2 : card.properties.points,
+        playerIdx: playerState.activePlayer,
+      },
     });
     if (toin) {
       setCard(null);
@@ -43,7 +46,10 @@ const SelectedCardModal = ({
     if (!toin) {
       playerDispatch({
         type: playerActionKind.REMOVE_CARD,
-        payload: idx,
+        payload: {
+          cardIdx: idx,
+          playerIdx: playerState.activePlayer,
+        },
       });
     }
   };
@@ -81,7 +87,10 @@ const SelectedCardModal = ({
                 setCard(card);
                 playerDispatch({
                   type: playerActionKind.REMOVE_CARD,
-                  payload: cardIdx,
+                  payload: {
+                    cardIdx: cardIdx,
+                    playerIdx: playerState.activePlayer,
+                  },
                 });
                 closeModal();
               }}
@@ -90,7 +99,10 @@ const SelectedCardModal = ({
             </button>
           )}
           {canPlayCard(
-            getActiveMatrix(boardState, playerState.arrow.arrowIndex),
+            getActiveMatrix(
+              boardState,
+              playerState.players[playerState.activePlayer].arrow.arrowIndex
+            ),
             card
           ) && (
             <button

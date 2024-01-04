@@ -1,5 +1,6 @@
 import { Reducer } from "react";
 import { CardObj } from "src/types/card";
+import { playerContextState } from "./playerContext";
 
 export interface PlayerArrowObj {
   playerId: number;
@@ -28,17 +29,26 @@ export type setPlayerAction = {
 
 export type setHandAction = {
   type: playerActionKind.SET_HAND;
-  payload: CardObj[];
+  payload: {
+    hand: CardObj[];
+    playerIdx: number;
+  };
 };
 
 export type removeCardAction = {
   type: playerActionKind.REMOVE_CARD;
-  payload: number;
+  payload: {
+    cardIdx: number;
+    playerIdx: number;
+  };
 };
 
 export type playCardAction = {
   type: playerActionKind.PLAY_CARD;
-  payload: number;
+  payload: {
+    points: number;
+    playerIdx: number;
+  };
 };
 
 export type playerAction =
@@ -47,7 +57,7 @@ export type playerAction =
   | removeCardAction
   | playCardAction;
 
-export const playerReducer: Reducer<PlayerObj, playerAction> = (
+export const playerReducer: Reducer<playerContextState, playerAction> = (
   state,
   action
 ) => {
@@ -55,25 +65,29 @@ export const playerReducer: Reducer<PlayerObj, playerAction> = (
 
   switch (type) {
     case playerActionKind.SET_PLAYER:
-      return payload;
-
-    case playerActionKind.SET_HAND:
       return {
         ...state,
-        hand: payload,
+        players: [...state.players, payload],
       };
 
-    case playerActionKind.REMOVE_CARD:
-      return {
-        ...state,
-        hand: removeCard(state.hand, payload),
-      };
-
-    case playerActionKind.PLAY_CARD:
-      return {
-        ...state,
-        score: state.score + payload,
-      };
+    case playerActionKind.SET_HAND: {
+      const newState = { ...state };
+      newState.players[payload.playerIdx].hand = payload.hand;
+      return newState;
+    }
+    case playerActionKind.REMOVE_CARD: {
+      const newState = { ...state };
+      newState.players[payload.playerIdx].hand = removeCard(
+        newState.players[payload.playerIdx].hand,
+        payload.cardIdx
+      );
+      return newState;
+    }
+    case playerActionKind.PLAY_CARD: {
+      const newState = { ...state };
+      newState.players[payload.playerIdx].score += payload.points;
+      return newState;
+    }
   }
 };
 
