@@ -1,34 +1,40 @@
-export class PointCard {
-  private _points: number;
-  private _pattern: number[][];
-  constructor(points: number, pattern: number[][]) {
-    this._points = points;
-    this._pattern = pattern;
+import { CardObj, cardProperties, cardTypes } from "src/types/card";
+
+export abstract class CardClass {
+  private _type: cardTypes;
+  private _faceUp: boolean = false;
+
+  constructor(type: cardTypes) {
+    this._type = type;
   }
 
-  get points() {
-    return this._points;
+  get faceUp() {
+    return this._faceUp;
   }
 
-  get pattern() {
-    return this._pattern;
+  get type() {
+    return this._type;
   }
 
-  //create code to check mirror pattern
-  matchPattern(playerPattern: number[][]) {
-    for (let i = 0; i < playerPattern.length; i++) {
-      for (let j = 0; j < playerPattern[i].length; j++) {
-        if (playerPattern[i][j] !== this._pattern[i][j]) {
-          return false;
-        }
-      }
-    }
-    return true;
+  turnFaceUp() {
+    this._faceUp = true;
+  }
+
+  turnFaceDown() {
+    this._faceUp = false;
+  }
+
+  playCard() {
+    console.log(this._type + " card played");
+  }
+
+  abstract getProperties(): cardProperties;
+
+  toCardObj() {
+    return {
+      type: this._type,
+      faceUp: this._faceUp,
+      properties: this.getProperties(),
+    } as CardObj;
   }
 }
-
-// Zizag example pattern
-// [1,0,0] -> inner layer
-// [0,1,0]
-// [1,0,0]
-// [0,1,0] -> outer layer
