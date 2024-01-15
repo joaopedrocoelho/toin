@@ -6,6 +6,10 @@ import { deckCards } from "src/classes/cards";
 import { BoardContext } from "src/context/boardContext";
 import { ModalContext } from "src/context/modalContext";
 import { playerActionKind } from "src/context/playerReducer";
+import AddPlayerForm from "../startgamemodal/AddPlayerForm";
+import AddPlayerButton from "../startgamemodal/AddPlayerButton";
+import AddPlayerCard from "../startgamemodal/AddPlayerCard";
+import AddPlayerRow from "../startgamemodal/AddPlayerRow";
 
 const StartGameModal = () => {
   const { setDeck } = useContext(DeckContext);
@@ -35,14 +39,17 @@ const StartGameModal = () => {
   return (
     <ModalWrapper>
       <div className="w-[80vw] h-5/6 flex gap-y-4 flex-col items-center justify-center glass p-6 pt-10 relative">
-        <button
-          className="bg-green-400 p-4 rounded-lg font-bold min-w-[200px] text-green-950"
-          onClick={() => {
-            startGame();
-          }}
-        >
-          Start Game
-        </button>
+        <AddPlayerRow />
+        <div className="flex w-full justify-between">
+          <button
+            className="bg-green-400 py-4 px-20  rounded-lg font-bold  text-green-950"
+            onClick={() => {
+              startGame();
+            }}
+          >
+            Start Game
+          </button>
+        </div>
       </div>
     </ModalWrapper>
   );
