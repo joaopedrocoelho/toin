@@ -35,6 +35,25 @@ export function drawCards(count: number, deck: CardObj[]) {
   };
 }
 
+export function drawHands(
+  playerCount: number,
+  cardsPerPlayer: number,
+  deck: CardObj[]
+) {
+  let deckCopy = [...deck];
+  const hands: CardObj[][] = [];
+  for (let i = 0; i < playerCount; i++) {
+    const { cards, deck: newDeck } = drawCards(cardsPerPlayer, deckCopy);
+    deckCopy = newDeck;
+    hands.push(cards);
+  }
+
+  return {
+    hands,
+    deck: deckCopy,
+  };
+}
+
 export const DeckContext = createContext<deckContextProps>({
   deck: [],
   setDeck: () => {},

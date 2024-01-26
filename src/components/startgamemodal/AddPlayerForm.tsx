@@ -1,6 +1,7 @@
 import { Label, TextInput } from "flowbite-react";
-import React from "react";
+import React, { useContext } from "react";
 import CloseIcon from "./CloseIcon";
+import { AddPlayerFormContext } from "src/context/addPlayerFormContext";
 
 const LabelTheme = {
   root: {
@@ -15,11 +16,18 @@ const InputTheme = {
     },
   },
 };
-const AddPlayerForm = ({ onClose }: { onClose: () => void }) => {
+
+interface Props {
+  onClose: () => void;
+  onChange: (value: string) => void;
+  idx: number;
+}
+const AddPlayerForm = ({ onClose, onChange, idx }: Props) => {
+  const { errorFields } = useContext(AddPlayerFormContext);
   return (
     <div
-      className="flex p-6 bg-white rounded-lg w-64 h-40 shadow-lg
-    "
+      className={`flex p-6 bg-white rounded-lg w-64 h-40 shadow-lg
+      ${errorFields.includes(idx) ? "border-2 border-red-500" : "border-none"}`}
     >
       <FormField>
         <div className="flex justify-between w-full items-center">
@@ -37,6 +45,9 @@ const AddPlayerForm = ({ onClose }: { onClose: () => void }) => {
           sizing="lg"
           onClick={(e) => {
             e.stopPropagation();
+          }}
+          onChange={(e) => {
+            onChange(e.target.value);
           }}
         />
       </FormField>

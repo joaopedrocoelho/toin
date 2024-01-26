@@ -17,7 +17,9 @@ export interface PlayerObj {
 
 export enum playerActionKind {
   SET_PLAYER,
+  SET_PLAYERS,
   SET_HAND,
+  SET_HANDS,
   REMOVE_CARD,
   PLAY_CARD,
 }
@@ -27,12 +29,25 @@ export type setPlayerAction = {
   payload: PlayerObj;
 };
 
+export type setPlayersAction = {
+  type: playerActionKind.SET_PLAYERS;
+  payload: PlayerObj[];
+};
+
 export type setHandAction = {
   type: playerActionKind.SET_HAND;
   payload: {
     hand: CardObj[];
     playerIdx: number;
   };
+};
+
+export type setHandsAction = {
+  type: playerActionKind.SET_HANDS;
+  payload: {
+    hand: CardObj[];
+    playerIdx: number;
+  }[];
 };
 
 export type removeCardAction = {
@@ -53,7 +68,9 @@ export type playCardAction = {
 
 export type playerAction =
   | setPlayerAction
+  | setPlayersAction
   | setHandAction
+  | setHandsAction
   | removeCardAction
   | playCardAction;
 
@@ -70,9 +87,23 @@ export const playerReducer: Reducer<playerContextState, playerAction> = (
         players: [...state.players, payload],
       };
 
+    case playerActionKind.SET_PLAYERS:
+      return {
+        ...state,
+        players: payload,
+      };
+
     case playerActionKind.SET_HAND: {
       const newState = { ...state };
       newState.players[payload.playerIdx].hand = payload.hand;
+      return newState;
+    }
+
+    case playerActionKind.SET_HANDS: {
+      const newState = { ...state };
+      payload.forEach((hand) => {
+        newState.players[hand.playerIdx].hand = hand.hand;
+      });
       return newState;
     }
     case playerActionKind.REMOVE_CARD: {
@@ -102,3 +133,12 @@ export function removeCard(hand: CardObj[], cardIdx: number) {
 
 //   return score;
 // }
+
+export function calcInitArrowIdx(totalPlayers: number, playerId: number) {
+  const BOARD_SPACES = 24;
+  const playerSpace = BOARD_SPACES / totalPlayers;
+  //24/1 = 24; 24/2 = 12; 24/3 = 8; 24/4 = 6;
+  const initArrowIdx = playerSpace * playerId;
+
+  return playerId === 0 ? initArrowIdx : initArrowIdx - 1;
+}
