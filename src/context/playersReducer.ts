@@ -140,5 +140,5 @@ export function calcInitArrowIdx(totalPlayers: number, playerId: number) {
   //24/1 = 24; 24/2 = 12; 24/3 = 8; 24/4 = 6;
   const initArrowIdx = playerSpace * playerId;
 
-  return playerId === 0 ? initArrowIdx : initArrowIdx - 1;
+  return playerId === 0 ? initArrowIdx : initArrowIdx;
 }

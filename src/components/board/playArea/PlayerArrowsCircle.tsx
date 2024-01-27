@@ -9,13 +9,15 @@ const PlayerArrowsCircle = () => {
   return (
     <div className="arrows-circle">
       {state.players.map((player, index) => {
+        console.log("player", player.id, player.name);
+        console.log("arrowIdx", player.arrow.arrowIndex);
         return (
           <div
             className="board-item"
             key={index}
             style={{
               transform: `rotate(${player.arrow.arrowIndex * 15}deg)`,
-              fill: `hsl(${player.id * 90}, 100%, 50%)`,
+              fill: `hsl(${player.id + 1 * 90}, 100%, 50%)`,
             }}
           >
             <PlayerArrow className="fill-amber-400 !w-12 rotate-180" />
