@@ -1,16 +1,16 @@
 import { Dispatch, createContext } from "react";
-import { PlayerObj, playerAction } from "./playerReducer";
+import { PlayerObj, playerAction } from "./playersReducer";
 
-export interface playerContextState {
+export interface playersContextState {
   activePlayer: number;
   players: PlayerObj[];
 }
-interface playerContextProps {
-  state: playerContextState;
+interface playersContextProps {
+  state: playersContextState;
   dispatch: Dispatch<playerAction>;
 }
 
-export const PlayerContext = createContext<playerContextProps>({
+export const PlayersContext = createContext<playersContextProps>({
   state: {
     activePlayer: 0,
     players: [],

@@ -9,13 +9,9 @@ import { boardReducer } from "./context/boardReducer";
 import { BoardContext } from "./context/boardContext";
 
 import { DeckContext } from "./context/deckContext";
-import { PlayerContext } from "./context/playerContext";
+import { PlayersContext } from "./context/playersContext";
 import StartGameModal from "./components/modals/StartGameModal";
-import {
-  PlayerObj,
-  playerAction,
-  playerReducer,
-} from "./context/playerReducer";
+import { playersReducer } from "./context/playersReducer";
 import { CardObj } from "./types/card";
 import { allSameOneSidePattern, rotatePattern } from "./types/cardpatterns";
 
@@ -48,7 +44,7 @@ function App() {
 
   const [deck, setDeck] = useState<CardObj[]>([]);
 
-  const [playerState, playerDispatch] = useReducer(playerReducer, {
+  const [playerState, playerDispatch] = useReducer(playersReducer, {
     activePlayer: 0,
     players: [],
   });
@@ -60,7 +56,7 @@ function App() {
         setDeck,
       }}
     >
-      <PlayerContext.Provider
+      <PlayersContext.Provider
         value={{
           state: playerState,
           dispatch: playerDispatch,
@@ -94,7 +90,7 @@ function App() {
             </ModalContext.Provider>
           </ToinContext.Provider>
         </BoardContext.Provider>
-      </PlayerContext.Provider>
+      </PlayersContext.Provider>
     </DeckContext.Provider>
   );
 }

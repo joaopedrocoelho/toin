@@ -1,6 +1,5 @@
 import * as React from "react";
-
-import { CardProps } from ".";
+import { CardProps } from "./cards/point-cards";
 const SvgStar = ({ pointsValue, ...props }: CardProps) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"

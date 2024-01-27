@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
-import { PlayerContext } from "src/context/playerContext";
+import { PlayersContext } from "src/context/playersContext";
 import PlayerInfo from "./PlayerInfo";
 
 const ScoreBoard = () => {
-  const { state: playerState } = useContext(PlayerContext);
+  const { state: playerState } = useContext(PlayersContext);
   return (
     <div className="flex rounded-lg p-6">
       {playerState.players.map((player) => (

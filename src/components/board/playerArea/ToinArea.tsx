@@ -4,7 +4,7 @@ import SelectedCardModal from "src/components/modals/SelectedCardModal";
 import { BoardContext } from "src/context/boardContext";
 import { getActiveMatrix } from "src/context/boardReducer";
 import { ModalContext } from "src/context/modalContext";
-import { PlayerContext } from "src/context/playerContext";
+import { PlayersContext } from "src/context/playersContext";
 import { ToinContext } from "src/context/toinContext";
 import { canPlayCard } from "src/types/cardpatterns";
 
@@ -12,7 +12,7 @@ const ToinArea = () => {
   const { card } = useContext(ToinContext);
   const { setModal } = useContext(ModalContext);
   const { state: boardState } = useContext(BoardContext);
-  const { state: playerState } = useContext(PlayerContext);
+  const { state: playerState } = useContext(PlayersContext);
 
   return card ? (
     <div
@@ -22,7 +22,10 @@ const ToinArea = () => {
     items-center justify-center
     ${
       canPlayCard(
-        getActiveMatrix(boardState, playerState.arrow.arrowIndex),
+        getActiveMatrix(
+          boardState,
+          playerState.players[playerState.activePlayer].arrow.arrowIndex
+        ),
         card
       )
         ? "outline-green-500"

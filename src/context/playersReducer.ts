@@ -1,6 +1,6 @@
 import { Reducer } from "react";
 import { CardObj } from "src/types/card";
-import { playerContextState } from "./playerContext";
+import { playersContextState } from "./playersContext";
 
 export interface PlayerArrowObj {
   playerId: number;
@@ -74,7 +74,7 @@ export type playerAction =
   | removeCardAction
   | playCardAction;
 
-export const playerReducer: Reducer<playerContextState, playerAction> = (
+export const playersReducer: Reducer<playersContextState, playerAction> = (
   state,
   action
 ) => {

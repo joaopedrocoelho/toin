@@ -4,12 +4,12 @@ import PlayerArea from "../playerArea/PlayerArea";
 import Deck from "./Deck";
 
 import { DeckContext } from "src/context/deckContext";
-import { PlayerContext } from "src/context/playerContext";
+import { PlayersContext } from "src/context/playersContext";
 import ScoreBoard from "../scoreboard/ScoreBoard";
 
 const PlayArea = () => {
   const { deck } = useContext(DeckContext);
-  const { state } = useContext(PlayerContext);
+  const { state } = useContext(PlayersContext);
 
   return (
     <div className="flex w-full relative justify-center items-center">

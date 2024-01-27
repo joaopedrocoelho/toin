@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from "react";
 import PlayerHand from "./PlayerHand";
 import ToinArea from "./ToinArea";
 import { ToinContext } from "src/context/toinContext";
-import { PlayerObj } from "src/context/playerReducer";
+import { PlayerObj } from "src/context/playersReducer";
 
 const PlayerArea = ({ player }: { player: PlayerObj | undefined }) => {
   console.log("player", player);

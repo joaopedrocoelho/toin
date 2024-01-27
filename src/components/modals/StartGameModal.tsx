@@ -1,14 +1,9 @@
 import React, { useContext } from "react";
 import ModalWrapper from "./ModalWrapper";
-import {
-  DeckContext,
-  drawCards,
-  drawHands,
-  shuffle,
-} from "src/context/deckContext";
-import { PlayerContext } from "src/context/playerContext";
+import { DeckContext, drawHands, shuffle } from "src/context/deckContext";
+import { PlayersContext } from "src/context/playersContext";
 import { ModalContext } from "src/context/modalContext";
-import { calcInitArrowIdx, playerActionKind } from "src/context/playerReducer";
+import { calcInitArrowIdx, playerActionKind } from "src/context/playersReducer";
 import AddPlayerRow from "../startgamemodal/AddPlayerRow";
 import {
   AddPlayerFormContext,
@@ -19,7 +14,7 @@ export const MAX_PLAYERS = 4;
 
 const StartGameModal = () => {
   const { deck, setDeck } = useContext(DeckContext);
-  const { dispatch: playerDispatch } = useContext(PlayerContext);
+  const { dispatch: playerDispatch } = useContext(PlayersContext);
   const { closeModal } = useContext(ModalContext);
 
   const [totalPlayers, setTotalPlayers] = React.useState<number>(0);
@@ -85,7 +80,7 @@ const StartGameModal = () => {
       <ModalWrapper>
         <div className="w-[80vw] h-5/6 flex gap-y-4 flex-col items-center justify-center glass p-6 pt-10 relative">
           <AddPlayerRow />
-          <div className="flex w-full justify-between">
+          <div className="flex w-full justify-between mt-8">
             <button
               type="button"
               onClick={players.length ? handleSubmit : undefined}
@@ -94,7 +89,7 @@ const StartGameModal = () => {
                   ? "bg-green-400"
                   : "bg-gray-400 cursor-not-allowed"
               }
-              py-4 px-20  rounded-lg font-bold  text-green-950`}
+              py-4 px-20  rounded-lg font-bold  text-green-950 mx-auto`}
             >
               Start Game
             </button>

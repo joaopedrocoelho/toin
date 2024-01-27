@@ -3,8 +3,8 @@ import ModalWrapper from "./ModalWrapper";
 import { ModalContext } from "src/context/modalContext";
 import Card from "../cards/Card";
 import { ToinContext } from "src/context/toinContext";
-import { PlayerContext } from "src/context/playerContext";
-import { playerActionKind } from "src/context/playerReducer";
+import { PlayersContext } from "src/context/playersContext";
+import { playerActionKind } from "src/context/playersReducer";
 import { BoardContext } from "src/context/boardContext";
 import { getActiveMatrix } from "src/context/boardReducer";
 import {
@@ -26,7 +26,7 @@ const SelectedCardModal = ({
   const { closeModal } = useContext(ModalContext);
   const { setCard } = useContext(ToinContext);
   const { state: playerState, dispatch: playerDispatch } =
-    useContext(PlayerContext);
+    useContext(PlayersContext);
   const { state: boardState, dispatch: boardDispatch } =
     useContext(BoardContext);
 

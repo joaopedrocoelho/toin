@@ -1,6 +1,6 @@
 import React from "react";
 import Card from "../../cards/Card";
-import { CardObj } from "src/context/deckContext";
+import { CardObj } from "src/types/card";
 
 const Deck = ({ cards }: { cards: CardObj[] }) => {
   return (

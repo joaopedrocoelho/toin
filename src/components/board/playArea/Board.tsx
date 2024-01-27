@@ -5,11 +5,11 @@ import Circle from "./Circle";
 import PlayerArrowsCircle from "./PlayerArrowsCircle";
 import { BoardContext } from "src/context/boardContext";
 import { boardActionKind, rotateLayer } from "src/context/boardReducer";
-import { PlayerContext } from "src/context/playerContext";
+import { PlayersContext } from "src/context/playersContext";
 
 const Board = () => {
   const { state, dispatch } = useContext(BoardContext);
-  const { state: playerState } = useContext(PlayerContext);
+  const { state: playersState } = useContext(PlayersContext);
 
   return (
     <div className="board relative">
