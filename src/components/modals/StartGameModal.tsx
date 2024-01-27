@@ -9,6 +9,7 @@ import {
   AddPlayerFormContext,
   NewPlayer,
 } from "src/context/addPlayerFormContext";
+import { deckCards } from "src/classes/cards";
 
 export const MAX_PLAYERS = 4;
 
@@ -22,7 +23,7 @@ const StartGameModal = () => {
   const [errorFields, setErrorFields] = React.useState<number[]>([]);
 
   const startGame = () => {
-    const { hands, deck: newDeck } = drawHands(totalPlayers, 7, shuffle(deck));
+    const { hands, newDeck } = drawHands(totalPlayers, 7, shuffle(deckCards));
     setDeck(newDeck);
 
     const newPlayers = players.map((player) => {
@@ -51,7 +52,6 @@ const StartGameModal = () => {
     let hasError = false;
     const errors: number[] = [];
     players.forEach((player, index) => {
-      console.log("player", player);
       if (!player?.name) {
         console.log("found error!");
         errors.push(index);

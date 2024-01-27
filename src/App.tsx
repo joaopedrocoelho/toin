@@ -13,7 +13,6 @@ import { PlayersContext } from "./context/playersContext";
 import StartGameModal from "./components/modals/StartGameModal";
 import { playersReducer } from "./context/playersReducer";
 import { CardObj } from "./types/card";
-import { allSameOneSidePattern, rotatePattern } from "./types/cardpatterns";
 
 function App() {
   const [modal, setNewModal] = useState<JSX.Element | null>(<StartGameModal />);

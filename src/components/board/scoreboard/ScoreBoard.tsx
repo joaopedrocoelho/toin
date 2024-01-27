@@ -9,8 +9,10 @@ const ScoreBoard = () => {
       {playerState.players.map((player) => (
         <PlayerInfo
           name={player.name}
+          id={player.id}
           score={player.score}
           key={`${player.id}-${player.name}`}
+          isActivePlayer={player.id === playerState.activePlayer}
         />
       ))}
     </div>

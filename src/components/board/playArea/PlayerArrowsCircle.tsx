@@ -17,10 +17,14 @@ const PlayerArrowsCircle = () => {
             key={index}
             style={{
               transform: `rotate(${player.arrow.arrowIndex * 15}deg)`,
-              fill: `hsl(${player.id + 1 * 90}, 100%, 50%)`,
             }}
           >
-            <PlayerArrow className="fill-amber-400 !w-12 rotate-180" />
+            <PlayerArrow
+              className=" !w-12 rotate-180"
+              style={{
+                fill: `hsl(${(player.id + 1) * 90}, 70%, 70%)`,
+              }}
+            />
           </div>
         );
       })}

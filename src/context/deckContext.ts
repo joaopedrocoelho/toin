@@ -50,7 +50,7 @@ export function drawHands(
 
   return {
     hands,
-    deck: deckCopy,
+    newDeck: deckCopy,
   };
 }
 
