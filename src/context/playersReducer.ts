@@ -12,6 +12,7 @@ export interface PlayerObj {
   name: string; //if name is null, not a valid player
   score: number;
   hand: CardObj[];
+  toin: CardObj | null;
   arrow: PlayerArrowObj;
 }
 
@@ -20,6 +21,7 @@ export enum playerActionKind {
   SET_PLAYERS,
   SET_HAND,
   SET_HANDS,
+  SET_TOIN,
   REMOVE_CARD,
   PLAY_CARD,
 }
@@ -58,6 +60,14 @@ export type removeCardAction = {
   };
 };
 
+export type setToinAction = {
+  type: playerActionKind.SET_TOIN;
+  payload: {
+    card: CardObj | null;
+    playerIdx: number;
+  };
+};
+
 export type playCardAction = {
   type: playerActionKind.PLAY_CARD;
   payload: {
@@ -71,6 +81,7 @@ export type playerAction =
   | setPlayersAction
   | setHandAction
   | setHandsAction
+  | setToinAction
   | removeCardAction
   | playCardAction;
 
@@ -106,6 +117,13 @@ export const playersReducer: Reducer<playersContextState, playerAction> = (
       });
       return newState;
     }
+
+    case playerActionKind.SET_TOIN: {
+      const newState = { ...state };
+      newState.players[payload.playerIdx].toin = payload.card;
+      return newState;
+    }
+
     case playerActionKind.REMOVE_CARD: {
       const newState = { ...state };
       newState.players[payload.playerIdx].hand = removeCard(
@@ -114,6 +132,7 @@ export const playersReducer: Reducer<playersContextState, playerAction> = (
       );
       return newState;
     }
+
     case playerActionKind.PLAY_CARD: {
       const newState = { ...state };
       newState.players[payload.playerIdx].score += payload.points;

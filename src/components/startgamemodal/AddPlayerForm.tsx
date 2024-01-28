@@ -1,7 +1,7 @@
 import { Label, TextInput } from "flowbite-react";
 import React, { useContext } from "react";
-import CloseIcon from "./CloseIcon";
 import { AddPlayerFormContext } from "src/context/addPlayerFormContext";
+import CloseIcon from "./CloseIcon";
 
 const LabelTheme = {
   root: {
@@ -12,7 +12,7 @@ const LabelTheme = {
 const InputTheme = {
   field: {
     input: {
-      base: "border-2 border-gray-400 rounded-lg",
+      base: "border-2 border-gray-400 rounded-lg w-full",
     },
   },
 };
@@ -39,6 +39,7 @@ const AddPlayerForm = ({ onClose, onChange, idx }: Props) => {
             <CloseIcon className="w-2 h-2 fill-red-800" />
           </div>
         </div>
+
         <TextInput
           theme={InputTheme}
           placeholder="Enter Player Name"
@@ -56,7 +57,7 @@ const AddPlayerForm = ({ onClose, onChange, idx }: Props) => {
 };
 
 export const FormField = ({ children }: { children: React.ReactNode }) => {
-  return <div className="flex flex-col max-w-80 gap-y-4">{children}</div>;
+  return <div className="flex flex-col w-full gap-y-4">{children}</div>;
 };
 
 export default AddPlayerForm;

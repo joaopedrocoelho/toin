@@ -1,18 +1,13 @@
-import React, { useContext, useEffect, useState } from "react";
-import ModalWrapper from "./ModalWrapper";
-import { ModalContext } from "src/context/modalContext";
-import Card from "../cards/Card";
-import { ToinContext } from "src/context/toinContext";
-import { PlayersContext } from "src/context/playersContext";
-import { playerActionKind } from "src/context/playersReducer";
+import { useContext, useState } from "react";
 import { BoardContext } from "src/context/boardContext";
 import { getActiveMatrix } from "src/context/boardReducer";
-import {
-  canPlayCard,
-  convertActiveMatrixToObjBasedOnPattern,
-  convertPatternToObj,
-} from "src/types/cardpatterns";
+import { ModalContext } from "src/context/modalContext";
+import { PlayersContext } from "src/context/playersContext";
+import { playerActionKind } from "src/context/playersReducer";
 import { CardObj } from "src/types/card";
+import { canPlayCard } from "src/types/cardpatterns";
+import Card from "../cards/Card";
+import ModalWrapper from "./ModalWrapper";
 
 const SelectedCardModal = ({
   card,
@@ -24,7 +19,6 @@ const SelectedCardModal = ({
   toin?: boolean;
 }) => {
   const { closeModal } = useContext(ModalContext);
-  const { setCard } = useContext(ToinContext);
   const { state: playerState, dispatch: playerDispatch } =
     useContext(PlayersContext);
   const { state: boardState, dispatch: boardDispatch } =
@@ -41,7 +35,13 @@ const SelectedCardModal = ({
       },
     });
     if (toin) {
-      setCard(null);
+      playerDispatch({
+        type: playerActionKind.SET_TOIN,
+        payload: {
+          card: null,
+          playerIdx: playerState.activePlayer,
+        },
+      });
     }
     if (!toin) {
       playerDispatch({
@@ -84,7 +84,13 @@ const SelectedCardModal = ({
             <button
               className="bg-amber-300 p-4 rounded-lg font-bold min-w-[200px] text-amber-950"
               onClick={() => {
-                setCard(card);
+                playerDispatch({
+                  type: playerActionKind.SET_TOIN,
+                  payload: {
+                    card: card,
+                    playerIdx: playerState.activePlayer,
+                  },
+                });
                 playerDispatch({
                   type: playerActionKind.REMOVE_CARD,
                   payload: {

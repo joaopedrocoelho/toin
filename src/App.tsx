@@ -1,16 +1,15 @@
-import { useEffect, useReducer, useState } from "react";
-import "./App.css";
-import PlayArea from "./components/board/playArea/PlayArea";
-import { ModalContext } from "./context/modalContext";
+import { useReducer, useState } from "react";
 import { createPortal } from "react-dom";
-import { ToinContext, cardProp } from "./context/toinContext";
+import "./App.css";
 import { circleArr } from "./classes/BoardClass";
-import { boardReducer } from "./context/boardReducer";
+import PlayArea from "./components/board/playArea/PlayArea";
 import { BoardContext } from "./context/boardContext";
+import { boardReducer } from "./context/boardReducer";
+import { ModalContext } from "./context/modalContext";
 
+import StartGameModal from "./components/modals/StartGameModal";
 import { DeckContext } from "./context/deckContext";
 import { PlayersContext } from "./context/playersContext";
-import StartGameModal from "./components/modals/StartGameModal";
 import { playersReducer } from "./context/playersReducer";
 import { CardObj } from "./types/card";
 
@@ -39,8 +38,6 @@ function App() {
     setNewModal(null);
   };
 
-  const [card, setCard] = useState<cardProp>(null);
-
   const [deck, setDeck] = useState<CardObj[]>([]);
 
   const [playerState, playerDispatch] = useReducer(playersReducer, {
@@ -67,27 +64,18 @@ function App() {
             dispatch,
           }}
         >
-          <ToinContext.Provider
+          <ModalContext.Provider
             value={{
-              card,
-              setCard: (card: CardObj | null) => {
-                setCard(card);
-              },
+              ModalComponent: modal,
+              setModal,
+              closeModal,
+              open,
             }}
           >
-            <ModalContext.Provider
-              value={{
-                ModalComponent: modal,
-                setModal,
-                closeModal,
-                open,
-              }}
-            >
-              {modal && open && createPortal(modal, document.body)}
+            {modal && open && createPortal(modal, document.body)}
 
-              <PlayArea />
-            </ModalContext.Provider>
-          </ToinContext.Provider>
+            <PlayArea />
+          </ModalContext.Provider>
         </BoardContext.Provider>
       </PlayersContext.Provider>
     </DeckContext.Provider>

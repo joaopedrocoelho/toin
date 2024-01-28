@@ -3,14 +3,12 @@ import "./circle.css";
 import { useContext } from "react";
 import { PlayersContext } from "src/context/playersContext";
 
-const PlayerArrowsCircle = () => {
+const PlayersArrowsCircle = () => {
   const { state } = useContext(PlayersContext);
 
   return (
     <div className="arrows-circle">
       {state.players.map((player, index) => {
-        console.log("player", player.id, player.name);
-        console.log("arrowIdx", player.arrow.arrowIndex);
         return (
           <div
             className="board-item"
@@ -32,4 +30,4 @@ const PlayerArrowsCircle = () => {
   );
 };
 
-export default PlayerArrowsCircle;
+export default PlayersArrowsCircle;

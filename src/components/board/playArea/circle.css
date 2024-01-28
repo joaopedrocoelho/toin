@@ -1,7 +1,11 @@
+:root {
+  --boardSize: 100%;
+}
+
 .board {
   position: relative;
-  width: 500px;
-  height: 500px;
+  width: 700px;
+  height: 700px;
   display: flex;
   flex-shrink: 0;
   justify-content: center;
@@ -12,14 +16,23 @@
 
 .board-center {
   position: absolute;
-  width: 100%;
-  height: 100%;
+  width: var(--boardSize);
+  height: var(--boardSize);
   background-color: rgb(31, 11, 50);
   transform: scale(0.27);
   border-radius: 50%;
 }
 
 .arrows-circle {
+  position: absolute;
+  width: calc(var(--boardSize) * 0.7);
+  height: calc(var(--boardSize) * 0.7);
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.oponents-circle {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -31,13 +44,14 @@
 
 .circle {
   position: absolute;
-  width: 90%;
-  height: 90%;
+  width: calc(var(--boardSize) * 0.6);
+  height: calc(var(--boardSize) * 0.6);
   border-radius: 100%;
   background-color: rgb(31, 11, 50);
   display: flex;
   justify-content: center;
   font-size: 3rem;
+  z-index: 10;
   --hover-color: hsl(271, 80%, 30%);
 
   &:hover {
@@ -48,6 +62,7 @@
     font-size: 3.2rem;
     transform: scale(0.8);
     background-color: hsl(271, 63%, 20%);
+    z-index: 13;
 
     &:hover {
       background-color: var(--hover-color);
@@ -56,6 +71,7 @@
   &:nth-child(4) {
     font-size: 3.6rem;
     transform: scale(0.6);
+    z-index: 14;
 
     &:hover {
       background-color: var(--hover-color);
@@ -65,6 +81,8 @@
     font-size: 3.5rem;
     transform: scale(0.43);
     background-color: hsl(271, 63%, 20%);
+
+    z-index: 15;
     &:hover {
       background-color: var(--hover-color);
     }

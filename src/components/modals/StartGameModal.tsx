@@ -29,6 +29,7 @@ const StartGameModal = () => {
     const newPlayers = players.map((player) => {
       return {
         hand: hands[player.id],
+        toin: null,
         score: 0,
         name: player.name,
         id: player.id,

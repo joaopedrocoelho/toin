@@ -10,7 +10,7 @@
       "@assets/*": ["src/assets/*"],
       "@components/*": ["src/components/*"],
       "@context/*": ["src/context/*"],
-      "@types/*": ["src/types/*"],
+      "@customTypes/*": ["src/types/*"],
       "@utils/*": ["src/utils/*"]
     },
     "types": ["vite-plugin-svgr/client"],
