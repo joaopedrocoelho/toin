@@ -1,4 +1,3 @@
-import { act } from "react-dom/test-utils";
 import { CardObj } from "./card";
 import { FixedArray } from "./helpers";
 
@@ -150,11 +149,15 @@ export function checkSameSymbolPatternObj(
     const symbols = Object.values(activeMatrixObj);
     for (let i = symbols.length - 1; i >= 0; i--) {
       if (symbols[i] !== 5) {
+        // ?
         keySymbol = symbols[i];
         break;
       }
     }
   }
+
+  console.log("keySymbol", keySymbol);
+  console.log("activeMatrixObj", activeMatrixObj);
 
   for (const prop in activeMatrixObj) {
     if (activeMatrixObj[prop] !== keySymbol && activeMatrixObj[prop] !== 5)
