@@ -26,7 +26,12 @@ const OpponentActiveToin = ({
           : "outline-red-500"
       } `}
     >
-      <Card type={card.type} faceUp={true} cardProperties={card.properties} />
+      <Card
+        type={card.type}
+        faceUp={true}
+        cardProperties={card.properties}
+        variant="board"
+      />
     </div>
   );
 };

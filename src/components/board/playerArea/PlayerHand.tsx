@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import Card from "src/components/cards/Card";
 import SelectedCardModal from "src/components/modals/SelectedCardModal";
 import { ModalContext } from "src/context/modalContext";
@@ -12,7 +12,7 @@ const PlayerHand = ({ hand }: PlayerHandProps) => {
   const { setModal } = useContext(ModalContext);
 
   return (
-    <div className="flex w-full pt-7 relative items-end">
+    <div className="flex w-full relative">
       {hand.map((card, index) => {
         return (
           <div
@@ -28,6 +28,7 @@ const PlayerHand = ({ hand }: PlayerHandProps) => {
               type={card.type}
               faceUp={true}
               cardProperties={card.properties}
+              variant="hand"
             />
           </div>
         );

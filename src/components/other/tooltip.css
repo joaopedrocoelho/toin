@@ -1,0 +1,28 @@
+.tooltip::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+}
+
+.hover {
+  animation-name: hover;
+  animation-duration: 1.5s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+}
+
+@keyframes hover {
+  0% {
+    transform: translateY(-200%);
+  }
+  50% {
+    transform: translateY(-180%);
+  }
+  100% {
+    transform: translateY(-200%);
+  }
+}

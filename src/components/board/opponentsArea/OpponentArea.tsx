@@ -8,7 +8,7 @@ interface Props {
 
 const OpponentArea = ({ player }: Props) => {
   return (
-    <div className="flex flex-rol gap-x-4">
+    <div className="flex flex-row gap-x-4">
       <OppononentToinArea
         card={player.toin}
         arrowIdx={player.arrow.arrowIndex}

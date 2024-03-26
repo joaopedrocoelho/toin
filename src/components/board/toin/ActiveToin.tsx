@@ -35,7 +35,12 @@ const ActiveToin = ({ card }: { card: CardObj }) => {
         setModal(<SelectedCardModal card={card} cardIdx={9999} toin />);
       }}
     >
-      <Card type={card.type} faceUp={true} cardProperties={card.properties} />
+      <Card
+        type={card.type}
+        faceUp={true}
+        cardProperties={card.properties}
+        variant="board"
+      />
     </div>
   );
 };

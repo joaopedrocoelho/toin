@@ -7,6 +7,8 @@ import { BoardContext } from "./context/boardContext";
 import { boardReducer } from "./context/boardReducer";
 import { ModalContext } from "./context/modalContext";
 
+import { TurnContext, initialTurnContextState } from "@context/turnContext";
+import { turnReducer } from "@context/turnReducer";
 import StartGameModal from "./components/modals/StartGameModal";
 import { DeckContext } from "./context/deckContext";
 import { PlayersContext } from "./context/playersContext";
@@ -45,6 +47,11 @@ function App() {
     players: [],
   });
 
+  const [turnState, turnDispatch] = useReducer(
+    turnReducer,
+    initialTurnContextState
+  );
+
   return (
     <DeckContext.Provider
       value={{
@@ -58,25 +65,32 @@ function App() {
           dispatch: playerDispatch,
         }}
       >
-        <BoardContext.Provider
+        <TurnContext.Provider
           value={{
-            state,
-            dispatch,
+            state: turnState,
+            dispatch: turnDispatch,
           }}
         >
-          <ModalContext.Provider
+          <BoardContext.Provider
             value={{
-              ModalComponent: modal,
-              setModal,
-              closeModal,
-              open,
+              state,
+              dispatch,
             }}
           >
-            {modal && open && createPortal(modal, document.body)}
+            <ModalContext.Provider
+              value={{
+                ModalComponent: modal,
+                setModal,
+                closeModal,
+                open,
+              }}
+            >
+              {modal && open && createPortal(modal, document.body)}
 
-            <PlayArea />
-          </ModalContext.Provider>
-        </BoardContext.Provider>
+              <PlayArea />
+            </ModalContext.Provider>
+          </BoardContext.Provider>
+        </TurnContext.Provider>
       </PlayersContext.Provider>
     </DeckContext.Provider>
   );

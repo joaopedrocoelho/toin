@@ -73,10 +73,10 @@ const SelectedCardModal = ({
           }}
         >
           <Card
-            height="350px"
             type={card.type}
             faceUp={true}
             cardProperties={card.properties}
+            variant="modal"
           />
         </div>
         <div className="flex gap-x-8 mt-16">

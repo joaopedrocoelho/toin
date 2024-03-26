@@ -1,9 +1,24 @@
 import React from "react";
+import { cardSize } from "./cardSize";
 
 interface Props {
   children?: React.ReactNode;
-  variant?: "deck" | "hand";
+  variant?: keyof typeof cardSize;
 }
+
+const borderSize = {
+  deck: "4px",
+  hand: "2px",
+  modal: "8px",
+  board: "1px",
+};
+
+const textSize = {
+  deck: "text-xs",
+  hand: "text-sm",
+  modal: "text-lg",
+  board: "text-xs",
+};
 
 const FaceDownCard = ({
   children = "Face Down Card",
@@ -12,11 +27,12 @@ const FaceDownCard = ({
   return (
     <div
       className={`flex text-white items-center 
-    justify-center aspect-[8/11] bg-purple-950 
+    justify-center bg-purple-950 
     rounded-md
-    ${variant === "deck" ? "min-w-[150px]" : "w-[50px]"}`}
+    ${cardSize[variant]}
+    ${textSize[variant]}`}
       style={{
-        boxShadow: "0px 0px 0px 4px #ff9200",
+        boxShadow: `0px 0px 0px ${borderSize[variant]} #ff9200`,
         filter: "drop-shadow(0px 0.2px 0px black)",
       }}
     >

@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
+import { AddPlayerFormContext } from "src/context/addPlayerFormContext";
 import AddPlayerButton from "./AddPlayerButton";
 import AddPlayerForm from "./AddPlayerForm";
-import { AddPlayerFormContext } from "src/context/addPlayerFormContext";
 
 const cardStyle: React.CSSProperties = {
   position: "relative",

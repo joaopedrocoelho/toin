@@ -10,7 +10,8 @@ steps 2~4 are optional
 
 */
 
-import { createContext } from "react";
+import { Dispatch, createContext } from "react";
+import { turnAction } from "./turnReducer";
 
 export enum ActionState {
   "undone",
@@ -39,7 +40,7 @@ export interface TurnContextState {
   turnRecords: TurnRecord[];
 }
 
-const initialTurnContextState: TurnContextState = {
+export const initialTurnContextState: TurnContextState = {
   currentTurn: {
     playerIdx: 0,
     turnActions: {
@@ -54,4 +55,12 @@ const initialTurnContextState: TurnContextState = {
   turnRecords: [],
 };
 
-export const TurnContext = createContext(initialTurnContextState);
+interface turnContextProps {
+  state: TurnContextState;
+  dispatch: Dispatch<turnAction>;
+}
+
+export const TurnContext = createContext<turnContextProps>({
+  state: initialTurnContextState,
+  dispatch: () => {},
+});

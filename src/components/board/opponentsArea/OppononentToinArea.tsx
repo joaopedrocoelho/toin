@@ -1,6 +1,6 @@
 import { CardObj } from "@customTypes/card";
+import EmptyToin from "../toin/EmptyToin";
 import OpponentActiveToin from "../toin/OpponentActiveToin";
-import OpponentEmptyToin from "../toin/OpponentEmptyToin";
 
 const OppononentToinArea = ({
   card,
@@ -12,7 +12,7 @@ const OppononentToinArea = ({
   return card ? (
     <OpponentActiveToin card={card} arrowIdx={arrowIdx} />
   ) : (
-    <OpponentEmptyToin />
+    <EmptyToin />
   );
 };
 

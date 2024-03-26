@@ -19,8 +19,8 @@ export function shuffle(deck: CardObj[]) {
 }
 export function drawCard(deck: CardObj[]) {
   return {
-    card: deck.shift(),
-    cards: deck,
+    card: deck.shift()!,
+    deck,
   };
 }
 
@@ -50,7 +50,7 @@ export function drawHands(
 
   return {
     hands,
-    newDeck: deckCopy,
+    deck: deckCopy,
   };
 }
 

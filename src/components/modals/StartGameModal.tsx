@@ -1,20 +1,20 @@
 import React, { useContext } from "react";
-import ModalWrapper from "./ModalWrapper";
-import { DeckContext, drawHands, shuffle } from "src/context/deckContext";
-import { PlayersContext } from "src/context/playersContext";
-import { ModalContext } from "src/context/modalContext";
-import { calcInitArrowIdx, playerActionKind } from "src/context/playersReducer";
-import AddPlayerRow from "../startgamemodal/AddPlayerRow";
+import { deckCards } from "src/classes/cards";
 import {
   AddPlayerFormContext,
   NewPlayer,
 } from "src/context/addPlayerFormContext";
-import { deckCards } from "src/classes/cards";
+import { DeckContext, drawHands, shuffle } from "src/context/deckContext";
+import { ModalContext } from "src/context/modalContext";
+import { PlayersContext } from "src/context/playersContext";
+import { calcInitArrowIdx, playerActionKind } from "src/context/playersReducer";
+import AddPlayerRow from "../startgamemodal/AddPlayerRow";
+import ModalWrapper from "./ModalWrapper";
 
 export const MAX_PLAYERS = 4;
 
 const StartGameModal = () => {
-  const { deck, setDeck } = useContext(DeckContext);
+  const { setDeck } = useContext(DeckContext);
   const { dispatch: playerDispatch } = useContext(PlayersContext);
   const { closeModal } = useContext(ModalContext);
 
@@ -23,8 +23,8 @@ const StartGameModal = () => {
   const [errorFields, setErrorFields] = React.useState<number[]>([]);
 
   const startGame = () => {
-    const { hands, newDeck } = drawHands(totalPlayers, 7, shuffle(deckCards));
-    setDeck(newDeck);
+    const { hands, deck } = drawHands(totalPlayers, 7, shuffle(deckCards));
+    setDeck(deck);
 
     const newPlayers = players.map((player) => {
       return {

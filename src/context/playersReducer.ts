@@ -24,6 +24,7 @@ export enum playerActionKind {
   SET_TOIN,
   REMOVE_CARD,
   PLAY_CARD,
+  BUY_CARD,
 }
 
 export type setPlayerAction = {
@@ -76,6 +77,14 @@ export type playCardAction = {
   };
 };
 
+export type buyCardAction = {
+  type: playerActionKind.BUY_CARD;
+  payload: {
+    card: CardObj;
+    playerIdx: number;
+  };
+};
+
 export type playerAction =
   | setPlayerAction
   | setPlayersAction
@@ -83,7 +92,8 @@ export type playerAction =
   | setHandsAction
   | setToinAction
   | removeCardAction
-  | playCardAction;
+  | playCardAction
+  | buyCardAction;
 
 export const playersReducer: Reducer<playersContextState, playerAction> = (
   state,
@@ -136,6 +146,12 @@ export const playersReducer: Reducer<playersContextState, playerAction> = (
     case playerActionKind.PLAY_CARD: {
       const newState = { ...state };
       newState.players[payload.playerIdx].score += payload.points;
+      return newState;
+    }
+
+    case playerActionKind.BUY_CARD: {
+      const newState = { ...state };
+      newState.players[payload.playerIdx].hand.push(payload.card);
       return newState;
     }
   }

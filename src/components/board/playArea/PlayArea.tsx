@@ -15,9 +15,7 @@ const PlayArea = () => {
 
   return (
     <div className="flex w-full relative justify-center items-center">
-      <div className="relative w-fit h-fit">
-        <Deck cards={deck} />
-      </div>
+      <Deck cards={deck} />
 
       <div className="flex flex-col w-fit h-fit">
         <div className="flex gap-x-4 items-center">
